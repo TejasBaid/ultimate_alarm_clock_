@@ -1,3 +1,4 @@
+import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ultimate_alarm_clock/app/utils/constants.dart';
@@ -65,7 +66,7 @@ class RepeatTile extends StatelessWidget {
                           child: TextButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
-                                kprimaryColor,
+                                Get.find<ThemeController>().primaryColor.value,
                               ),
                             ),
                             onPressed: () {
@@ -159,7 +160,7 @@ class RepeatTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   'Daily',
                 ),
                 Checkbox.adaptive(
@@ -168,7 +169,7 @@ class RepeatTile extends StatelessWidget {
                     color:
                         themeController.primaryTextColor.value.withOpacity(0.5),
                   ),
-                  activeColor: kprimaryColor.withOpacity(0.8),
+                  activeColor: Get.find<ThemeController>().primaryColor.value.withOpacity(0.8),
                   value: controller.isDailySelected.value,
                   onChanged: (value) {
                     Utils.hapticFeedback();
@@ -213,7 +214,7 @@ class RepeatTile extends StatelessWidget {
                   color:
                       themeController.primaryTextColor.value.withOpacity(0.5),
                 ),
-                activeColor: kprimaryColor.withOpacity(0.8),
+                activeColor: Get.find<ThemeController>().primaryColor.value.withOpacity(0.8),
                 value: controller.repeatDays[dayIndex],
                 onChanged: (value) {
                   Utils.hapticFeedback();
@@ -308,7 +309,7 @@ class RepeatTile extends StatelessWidget {
                             Get.back();
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: kprimaryColor,
+                            backgroundColor: Get.find<ThemeController>().primaryColor.value,
                           ),
                           child: Text(
                             'Done'.tr,
@@ -334,14 +335,14 @@ class RepeatTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text('Custom'),
+                Text('Custom'),
                 Checkbox.adaptive(
                   side: BorderSide(
                     width: 1.5,
                     color:
                         themeController.primaryTextColor.value.withOpacity(0.5),
                   ),
-                  activeColor: kprimaryColor.withOpacity(0.8),
+                  activeColor: Get.find<ThemeController>().primaryColor.value.withOpacity(0.8),
                   value: controller.isCustomSelected.value,
                   onChanged: (value) {
                     Utils.hapticFeedback();
@@ -382,7 +383,7 @@ class RepeatTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   'Weekdays',
                 ),
                 Checkbox.adaptive(
@@ -391,7 +392,7 @@ class RepeatTile extends StatelessWidget {
                     color:
                         themeController.primaryTextColor.value.withOpacity(0.5),
                   ),
-                  activeColor: kprimaryColor.withOpacity(0.8),
+                  activeColor: Get.find<ThemeController>().primaryColor.value.withOpacity(0.8),
                   value: controller.isWeekdaysSelected.value,
                   onChanged: (value) {
                     Utils.hapticFeedback();

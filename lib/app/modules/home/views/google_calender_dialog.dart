@@ -23,12 +23,12 @@ Future<Widget> googleCalenderDialog(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: controller.calendarFetchStatus == 'Loading'
-              ? const SizedBox(
+              ? SizedBox(
                   child: Center(
                     child: CircularProgressIndicator(
                       backgroundColor: Colors.transparent,
                       valueColor: AlwaysStoppedAnimation(
-                        kprimaryColor,
+                        Get.find<ThemeController>().primaryColor.value,
                       ),
                     ),
                   ),
@@ -41,8 +41,8 @@ Future<Widget> googleCalenderDialog(
                       children: [
                         SvgPicture.asset(
                           'assets/images/GC.svg',
-                          colorFilter: const ColorFilter.mode(
-                            kprimaryColor,
+                          colorFilter: ColorFilter.mode(
+                            Get.find<ThemeController>().primaryColor.value,
                             BlendMode.srcIn,
                           ),
                           height: 30 * controller.scalingFactor.value,
@@ -101,7 +101,7 @@ Future<Widget> googleCalenderDialog(
                                                     const EdgeInsets.all(8.0),
                                                 child: Icon(
                                                   Icons.calendar_month,
-                                                  color: kprimaryColor,
+                                                  color: Get.find<ThemeController>().primaryColor.value,
                                                 ),
                                               ),
                                               Text(
@@ -160,12 +160,12 @@ Future<Widget> googleCalenderDialog(
                                                       Axis.horizontal,
                                                   child: Row(
                                                     children: [
-                                                      const Padding(
-                                                        padding:
-                                                            EdgeInsets.all(8.0),
-                                                        child: Icon(
-                                                          Icons.calendar_month,
-                                                          color: kprimaryColor,
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.all(8.0),
+                                                          child: Icon(
+                                                            Icons.calendar_month,
+                                                            color: Get.find<ThemeController>().primaryColor.value,
                                                         ),
                                                       ),
                                                       Text(
@@ -198,7 +198,7 @@ Future<Widget> googleCalenderDialog(
                                                         child: Icon(
                                                           Icons
                                                               .watch_later_outlined,
-                                                          color: kprimaryColor,
+                                                          color: Get.find<ThemeController>().primaryColor.value,
                                                         ),
                                                       ),
                                                       Text(
@@ -250,7 +250,7 @@ Future<Widget> googleCalenderDialog(
                                                     BorderRadius.circular(
                                                   16,
                                                 ),
-                                                color: kprimaryColor,
+                                                color: Get.find<ThemeController>().primaryColor.value,
                                               ),
                                               child: Padding(
                                                 padding:

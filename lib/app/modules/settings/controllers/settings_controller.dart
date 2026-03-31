@@ -10,7 +10,6 @@ import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_cont
 import 'package:ultimate_alarm_clock/app/utils/constants.dart';
 import 'package:weather/weather.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:fl_location/fl_location.dart';
 
 import '../../../data/providers/get_storage_provider.dart';
 import '../../../data/providers/google_cloud_api_provider.dart';
@@ -26,6 +25,12 @@ class SettingsController extends GetxController {
   final _flipToSnooze = 'flip_to_snooze';
   var isSortedAlarmListEnabled = true.obs;
   final _sortedAlarmListKey = 'sorted_alarm_list';
+  var isTimezoneEnabledByDefault = false.obs;
+  final _timezoneEnabledByDefaultKey = 'timezone_enabled_by_default';
+  var defaultTimezoneId = ''.obs;
+  final _defaultTimezoneIdKey = 'default_timezone_id';
+  var showTimezoneInAlarmList = true.obs;
+  final _showTimezoneInAlarmListKey = 'show_timezone_in_alarm_list';
   var currentLanguage = 'en_US'.obs;
   final _secureStorageProvider = SecureStorageProvider();
   final apiKey = TextEditingController();
@@ -122,41 +127,41 @@ class SettingsController extends GetxController {
   }
 
   Future<void> getLocation() async {
-    if (await _checkAndRequestPermission()) {
-      const timeLimit = Duration(seconds: 10);
-      await FlLocation.getLocation(
-        timeLimit: timeLimit,
-        accuracy: LocationAccuracy.best,
-      ).then((location) {
-        currentPoint.value = LatLng(location.latitude, location.longitude);
-      }).onError((error, stackTrace) {
-        debugPrint('error: ${error.toString()}');
-      });
-    }
+    // if (await _checkAndRequestPermission()) {
+    //   const timeLimit = Duration(seconds: 10);
+    //   await FlLocation.getLocation(
+    //     timeLimit: timeLimit,
+    //     accuracy: LocationAccuracy.best,
+    //   ).then((location) {
+    //     currentPoint.value = LatLng(location.latitude, location.longitude);
+    //   }).onError((error, stackTrace) {
+    //     debugPrint('error: ${error.toString()}');
+    //   });
+    // }
   }
 
   Future<bool> _checkAndRequestPermission({bool? background}) async {
-    if (!await FlLocation.isLocationServicesEnabled) {
-      // Location services are disabled.
-      return false;
-    }
-
-    var locationPermission = await FlLocation.checkLocationPermission();
-    if (locationPermission == LocationPermission.deniedForever) {
-      // Cannot request runtime permission because location permission is
-      // denied forever.
-      return false;
-    } else if (locationPermission == LocationPermission.denied) {
-      // Ask the user for location permission.
-      locationPermission = await FlLocation.requestLocationPermission();
-      if (locationPermission == LocationPermission.denied ||
-          locationPermission == LocationPermission.deniedForever) return false;
-    }
-
-    // Location permission must always be allowed (LocationPermission.always)
-    // to collect location data in the background.
-    if (background == true &&
-        locationPermission == LocationPermission.whileInUse) return false;
+    // if (!await FlLocation.isLocationServicesEnabled) {
+    //   // Location services are disabled.
+    //   return false;
+    // }
+    //
+    // var locationPermission = await FlLocation.checkLocationPermission();
+    // if (locationPermission == LocationPermission.deniedForever) {
+    //   // Cannot request runtime permission because location permission is
+    //   // denied forever.
+    //   return false;
+    // } else if (locationPermission == LocationPermission.denied) {
+    //   // Ask the user for location permission.
+    //   locationPermission = await FlLocation.requestLocationPermission();
+    //   if (locationPermission == LocationPermission.denied ||
+    //       locationPermission == LocationPermission.deniedForever) return false;
+    // }
+    //
+    // // Location permission must always be allowed (LocationPermission.always)
+    // // to collect location data in the background.
+    // if (background == true &&
+    //     locationPermission == LocationPermission.whileInUse) return false;
 
     // Location services has been enabled and permission have been granted.
     return true;
@@ -173,6 +178,14 @@ class SettingsController extends GetxController {
 
     isSortedAlarmListEnabled.value = await _secureStorageProvider
         .readSortedAlarmListValue(key: _sortedAlarmListKey);
+
+    // Load timezone preferences
+    isTimezoneEnabledByDefault.value = await _secureStorageProvider
+        .readTimezoneEnabledByDefault(key: _timezoneEnabledByDefaultKey);
+    defaultTimezoneId.value = await _secureStorageProvider
+        .readDefaultTimezoneId(key: _defaultTimezoneIdKey);
+    showTimezoneInAlarmList.value = await _secureStorageProvider
+        .readShowTimezoneInAlarmList(key: _showTimezoneInAlarmListKey);
 
     currentLanguage.value = await storage.readCurrentLanguage();
 
@@ -251,9 +264,47 @@ class SettingsController extends GetxController {
   void updateLocale(String key) {
     final String languageCode = optionslocales[key]['languageCode'];
     final String countryCode = optionslocales[key]['countryCode'];
+    currentLanguage.value = key;
     Get.updateLocale(Locale(languageCode, countryCode));
     local.value = Get.locale.toString();
     storage.writeCurrentLanguage(local.value);
     storage.writeLocale(languageCode, countryCode);
+  }
+
+  // Timezone preference methods
+  void _saveTimezoneEnabledByDefaultPreference() async {
+    await _secureStorageProvider.writeTimezoneEnabledByDefault(
+      key: _timezoneEnabledByDefaultKey,
+      isTimezoneEnabledByDefault: isTimezoneEnabledByDefault.value,
+    );
+  }
+
+  void toggleTimezoneEnabledByDefault(bool enabled) {
+    isTimezoneEnabledByDefault.value = enabled;
+    _saveTimezoneEnabledByDefaultPreference();
+  }
+
+  void _saveDefaultTimezoneIdPreference() async {
+    await _secureStorageProvider.writeDefaultTimezoneId(
+      key: _defaultTimezoneIdKey,
+      defaultTimezoneId: defaultTimezoneId.value,
+    );
+  }
+
+  void setDefaultTimezoneId(String timezoneId) {
+    defaultTimezoneId.value = timezoneId;
+    _saveDefaultTimezoneIdPreference();
+  }
+
+  void _saveShowTimezoneInAlarmListPreference() async {
+    await _secureStorageProvider.writeShowTimezoneInAlarmList(
+      key: _showTimezoneInAlarmListKey,
+      showTimezoneInAlarmList: showTimezoneInAlarmList.value,
+    );
+  }
+
+  void toggleShowTimezoneInAlarmList(bool enabled) {
+    showTimezoneInAlarmList.value = enabled;
+    _saveShowTimezoneInAlarmListPreference();
   }
 }

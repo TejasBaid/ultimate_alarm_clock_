@@ -20,6 +20,7 @@ class ProfileModel {
   late bool isShakeEnabled;
   late bool isQrEnabled;
   late bool isPedometerEnabled;
+  late bool isMemoryEnabled;
   late int intervalToAlarm;
   late bool isActivityEnabled;
   late String location;
@@ -29,6 +30,7 @@ class ProfileModel {
   late List<int> weatherTypes;
   late int shakeTimes;
   late int numberOfSteps;
+  late int numMemoryRounds;
   late int numMathsQuestions;
   late int mathsDifficulty;
   late String qrValue;
@@ -54,8 +56,12 @@ class ProfileModel {
   late int guardianTimer;
   late String guardian;
   late bool isCall;
+  late bool isSunriseEnabled;
+  late int sunriseDuration;
+  late double sunriseIntensity;
+  late int sunriseColorScheme;
   @ignore
-  Map? offsetDetails;
+  List<Map>? offsetDetails;
 
   ProfileModel(
       {required this.profileName,
@@ -82,9 +88,11 @@ class ProfileModel {
       required this.isQrEnabled,
       required this.qrValue,
       required this.isPedometerEnabled,
+      required this.isMemoryEnabled,
       required this.numberOfSteps,
+      required this.numMemoryRounds,
       required this.activityInterval,
-      this.offsetDetails = const {},
+      this.offsetDetails = const [{}],
       required this.label,
       required this.isOneTime,
       required this.snoozeDuration,
@@ -101,7 +109,11 @@ class ProfileModel {
       required this.isGuardian,
       required this.guardianTimer,
       required this.guardian,
-      required this.isCall});
+      required this.isCall,
+      required this.isSunriseEnabled,
+      required this.sunriseDuration,
+      required this.sunriseIntensity,
+      required this.sunriseColorScheme});
 
   ProfileModel.fromDocumentSnapshot({
     required firestore.DocumentSnapshot documentSnapshot,
@@ -114,9 +126,18 @@ class ProfileModel {
     if (isSharedAlarmEnabled && user != null) {
       // Using offsetted time only if it is enabled
 
-      minutesSinceMidnight = Utils.timeOfDayToInt(
-        Utils.stringToTimeOfDay(offsetDetails![user.id]['offsettedTime']),
-      );
+if (offsetDetails != null) {
+  final userOffset = offsetDetails!
+      .where((entry) => entry['userId'] == user.id)
+      .toList();
+
+  if (userOffset.isNotEmpty) {
+    final data = userOffset.first;
+    minutesSinceMidnight = Utils.timeOfDayToInt(
+      Utils.stringToTimeOfDay(data['offsettedTime']),
+    );
+  }
+}
     } else {
       minutesSinceMidnight = documentSnapshot['minutesSinceMidnight'];
     }
@@ -148,7 +169,9 @@ class ProfileModel {
     isShakeEnabled = documentSnapshot['isShakeEnabled'];
     shakeTimes = documentSnapshot['shakeTimes'];
     isPedometerEnabled = documentSnapshot['isPedometerEnabled'];
+    isMemoryEnabled = documentSnapshot['isMemoryEnabled'] ?? false;
     numberOfSteps = documentSnapshot['numberOfSteps'];
+    numMemoryRounds = documentSnapshot['numMemoryRounds'] ?? 3;
     ringtoneName = documentSnapshot['ringtoneName'];
     note = documentSnapshot['note'];
     deleteAfterGoesOff = documentSnapshot['deleteAfterGoesOff'];
@@ -202,7 +225,9 @@ class ProfileModel {
     isShakeEnabled = profileData['isShakeEnabled'];
     shakeTimes = profileData['shakeTimes'];
     isPedometerEnabled = profileData['isPedometerEnabled'];
+    isMemoryEnabled = profileData['isMemoryEnabled'] ?? false;
     numberOfSteps = profileData['numberOfSteps'];
+    numMemoryRounds = profileData['numMemoryRounds'] ?? 3;
     label = profileData['label'];
     isOneTime = profileData['isOneTime'];
     ringtoneName = profileData['ringtoneName'];
@@ -259,7 +284,9 @@ class ProfileModel {
       'isShakeEnabled': profileRecord.isShakeEnabled,
       'shakeTimes': profileRecord.shakeTimes,
       'isPedometerEnabled': profileRecord.isPedometerEnabled,
+      'isMemoryEnabled': profileRecord.isMemoryEnabled,
       'numberOfSteps': profileRecord.numberOfSteps,
+      'numMemoryRounds': profileRecord.numMemoryRounds,
       'snoozeDuration': profileRecord.snoozeDuration,
       'gradient': profileRecord.gradient,
       'ringtoneName': profileRecord.ringtoneName,

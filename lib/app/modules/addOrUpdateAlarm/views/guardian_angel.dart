@@ -163,7 +163,7 @@ class GuardianAngel extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: (val == 0 && !controller.isCall.value) ||
                           (val == 1 && controller.isCall.value)
-                      ? kprimaryColor
+                      ? Get.find<ThemeController>().primaryColor.value
                       : kLightPrimaryDisabledTextColor,
                   borderRadius: BorderRadius.circular(20),
                 ),

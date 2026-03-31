@@ -9,6 +9,7 @@ import 'package:ultimate_alarm_clock/app/data/providers/isar_provider.dart';
 import 'package:ultimate_alarm_clock/app/modules/home/views/google_calender_dialog.dart';
 import 'package:ultimate_alarm_clock/app/modules/home/views/profile_config.dart';
 import 'package:ultimate_alarm_clock/app/modules/home/views/toggle_button.dart';
+import 'package:ultimate_alarm_clock/app/modules/home/views/alarm_list_item.dart';
 import 'package:ultimate_alarm_clock/app/modules/settings/controllers/settings_controller.dart';
 import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_controller.dart';
 import 'package:ultimate_alarm_clock/app/utils/audio_utils.dart';
@@ -29,7 +30,8 @@ class HomeView extends GetView<HomeController> {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     var width = Get.width;
     var height = Get.height;
-    return Scaffold(
+    return Obx(() => Scaffold(
+      backgroundColor: themeController.primaryBackgroundColor.value,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Obx(
         () => Visibility(
@@ -38,6 +40,8 @@ class HomeView extends GetView<HomeController> {
               height: width * 0.13,
               width: width * 0.13,
               child: FloatingActionButton(
+                backgroundColor: themeController.primaryColor.value,
+                foregroundColor: Colors.white,
                 onPressed: () {
                   Utils.hapticFeedback();
                   controller.isProfile.value = false;
@@ -49,6 +53,7 @@ class HomeView extends GetView<HomeController> {
                 child: Container(
                     child: Icon(
                   Icons.add,
+                  color: Colors.white,
                   size: controller.scalingFactor.value * 30,
                 )),
               ),
@@ -65,6 +70,7 @@ class HomeView extends GetView<HomeController> {
                 ? (context, innerBoxIsScrolled) => [
                       // Show the normal app bar
                       SliverAppBar(
+                        backgroundColor: themeController.primaryBackgroundColor.value,
                         actions: [Container()],
                         automaticallyImplyLeading: false,
                         expandedHeight: height / 7.9,
@@ -145,8 +151,8 @@ class HomeView extends GetView<HomeController> {
                                               child: SvgPicture.asset(
                                                 'assets/images/GC.svg',
                                                 colorFilter:
-                                                    const ColorFilter.mode(
-                                                  kprimaryColor,
+                                                    ColorFilter.mode(
+                                                  themeController.primaryTextColor.value.withOpacity(0.75),
                                                   BlendMode.srcIn,
                                                 ),
                                                 height: 30 *
@@ -246,6 +252,7 @@ class HomeView extends GetView<HomeController> {
                 : (context, innerBoxIsScrolled) => [
                       // Else show the multiple select mode app bar
                       SliverAppBar(
+                        backgroundColor: themeController.primaryBackgroundColor.value,
                         automaticallyImplyLeading: false,
                         actions: [Container()],
                         expandedHeight: height / 7.9,
@@ -387,7 +394,7 @@ class HomeView extends GetView<HomeController> {
                                                                                 onPressed: () => Get.back(result: false),
                                                                                 style: ButtonStyle(
                                                                                   backgroundColor: MaterialStateProperty.all(
-                                                                                    kprimaryTextColor.withOpacity(0.5),
+                                                                                    themeController.primaryTextColor.value.withOpacity(0.5),
                                                                                   ),
                                                                                 ),
                                                                                 child: Text(
@@ -398,12 +405,12 @@ class HomeView extends GetView<HomeController> {
                                                                               TextButton(
                                                                                 onPressed: () => Get.back(result: true),
                                                                                 style: ButtonStyle(
-                                                                                  backgroundColor: MaterialStateProperty.all(kprimaryColor),
+                                                                                  backgroundColor: MaterialStateProperty.all(themeController.primaryColor.value),
                                                                                 ),
                                                                                 child: Text(
                                                                                   'Delete'.tr,
                                                                                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                                                                                    color: kprimaryBackgroundColor,
+                                                                                    color: themeController.secondaryTextColor.value,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -493,11 +500,11 @@ class HomeView extends GetView<HomeController> {
                                 stream: streamAlarms,
                                 builder: (context, snapshot) {
                                   if (!snapshot.hasData) {
-                                    return const Center(
+                                    return Center(
                                       child: CircularProgressIndicator.adaptive(
                                         backgroundColor: Colors.transparent,
                                         valueColor: AlwaysStoppedAnimation(
-                                          kprimaryColor,
+                                          themeController.primaryColor.value,
                                         ),
                                       ),
                                     );
@@ -533,550 +540,67 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                       );
                                     }
-                                    return ListView.separated(
-                                      separatorBuilder: (context, _) {
-                                        return SizedBox(
-                                          height: height * 0.02,
-                                        );
-                                      },
-                                      itemCount: alarms.length + 1,
-                                      itemBuilder: (context, index) {
-                                        // Spacing after last card
-                                        if (index == alarms.length) {
-                                          return SizedBox(
-                                            height: height * 0.1,
-                                          );
-                                        }
-                                        final AlarmModel alarm = alarms[index];
-                                        final repeatDays =
-                                            Utils.getRepeatDays(alarm.days);
-                                        // Main card
-                                        return alarm.profile ==
-                                                controller.selectedProfile.value
-                                            ? Dismissible(
+                                    return ListView(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 16 * controller.scalingFactor.value,
+                                        vertical: 8 * controller.scalingFactor.value,
+                                      ),
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: themeController.secondaryBackgroundColor.value,
+                                            borderRadius: BorderRadius.circular(24),
+                                          ),
+                                          clipBehavior: Clip.antiAlias,
+                                          child: Column(
+                                            children: alarms.asMap().entries.map((entry) {
+                                              int index = entry.key;
+                                              AlarmModel alarm = entry.value;
+                                              bool isLast = index == alarms.length - 1;
+                                              
+                                              if (alarm.profile != controller.selectedProfile.value) {
+                                                return const SizedBox.shrink();
+                                              }
+
+                                              return Dismissible(
+                                                key: ValueKey(alarm.isarId),
+                                                direction: DismissDirection.endToStart,
                                                 onDismissed: (direction) async {
-                                                  // pop up confirmation to delete on swipe
-                                                  bool userConfirmed =
-                                                      await showDeleteAlarmConfirmationPopupOnSwipe(
-                                                    context,
-                                                  );
+                                                  bool userConfirmed = await showDeleteAlarmConfirmationPopupOnSwipe(context);
                                                   if (userConfirmed) {
-                                                    await controller.swipeToDeleteAlarm(
-                                                      controller.userModel.value,
-                                                      alarm,
-                                                    );
+                                                    await controller.swipeToDeleteAlarm(controller.userModel.value, alarm);
                                                   }
-                                                  
-                                                  Get.offNamedUntil(
-                                                    '/bottom-navigation-bar',
-                                                    (route) =>
-                                                        route.settings.name ==
-                                                        '/splash-screen',
-                                                  );
+                                                  Get.offNamedUntil('/bottom-navigation-bar', (route) => route.settings.name == '/splash-screen');
                                                 },
-                                                key: ValueKey(alarms[index]),
                                                 background: Container(
                                                   color: Colors.red,
-                                                  // Set the background color to red
-                                                  padding: EdgeInsets.symmetric(
-                                                    horizontal: 20,
-                                                  ),
-                                                  alignment: Alignment.center,
-                                                  child: Icon(
-                                                    Icons.delete,
-                                                    color: Colors.white,
-                                                  ),
+                                                  alignment: Alignment.centerRight,
+                                                  padding: const EdgeInsets.only(right: 20),
+                                                  child: const Icon(Icons.delete, color: Colors.white),
                                                 ),
-                                                child: Obx(
-                                                  () => GestureDetector(
-                                                    onTap: () {
-                                                      Utils.hapticFeedback();
-
-                                                      // If multiple select mode is not on, then only you can update the alarm
-                                                      if (!controller
-                                                          .inMultipleSelectMode
-                                                          .value) {
-                                                        controller.isProfile
-                                                            .value = false;
-                                                        Get.toNamed(
-                                                          '/add-update-alarm',
-                                                          arguments: alarm,
-                                                        );
-                                                      }
-                                                    },
-                                                    onLongPress: () {
-                                                      // Entering the multiple select mode
-                                                      controller
-                                                          .inMultipleSelectMode
-                                                          .value = true;
-                                                      controller
-                                                          .isAnyAlarmHolded
-                                                          .value = true;
-
-                                                      // Assigning the alarm list pairs to list of alarms and list of isSelected all equal to false initially
-                                                      controller
-                                                              .alarmListPairs =
-                                                          Pair(
-                                                        alarms,
-                                                        List.generate(
-                                                          alarms.length,
-                                                          (index) => false.obs,
-                                                        ),
-                                                      );
-
-                                                Utils.hapticFeedback();
-                                              },
-                                              onLongPressEnd: (details) {
-                                                controller
-                                                    .isAnyAlarmHolded
-                                                    .value = false;
-                                              },
-                                              child: AnimatedContainer(
-                                                duration: const Duration(
-                                                  milliseconds: 600,
+                                                child: AlarmListItem(
+                                                  alarm: alarm,
+                                                  index: index,
+                                                  controller: controller,
+                                                  themeController: themeController,
+                                                  settingsController: settingsController,
+                                                  isLast: isLast,
                                                 ),
-                                                curve: Curves.easeInOut,
-                                                margin: EdgeInsets.all(
-                                                  controller
-                                                      .isAnyAlarmHolded
-                                                          .value
-                                                      ? 10
-                                                      : 0,
-                                                ),
-                                                child: Center(
-                                                  child: Padding(
-                                                    padding:
-                                                    const EdgeInsets
-                                                        .symmetric(
-                                                      horizontal: 10.0,
-                                                    ),
-                                                    child: Card(
-                                                      color: themeController.secondaryBackgroundColor.value,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          18,
-                                                        ),
-                                                      ),
-                                                      child: Center(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets
-                                                                  .only(
-                                                            left: 25.0,
-                                                            right: controller
-                                                                    .inMultipleSelectMode
-                                                                    .value
-                                                                ? 10.0
-                                                                : 0.0,
-                                                            top: controller
-                                                                    .inMultipleSelectMode
-                                                                    .value
-                                                                ? Utils.isChallengeEnabled(
-                                                                          alarm,
-                                                                        ) ||
-                                                                        Utils.isAutoDismissalEnabled(
-                                                                          alarm,
-                                                                        )
-                                                                    ? 15.0
-                                                                    : 18.0
-                                                                : Utils.isChallengeEnabled(
-                                                                          alarm,
-                                                                        ) ||
-                                                                        Utils.isAutoDismissalEnabled(
-                                                                          alarm,
-                                                                        )
-                                                                    ? 8.0
-                                                                    : 0.0,
-                                                            bottom: controller
-                                                                    .inMultipleSelectMode
-                                                                    .value
-                                                                ? Utils.isChallengeEnabled(
-                                                                          alarm,
-                                                                        ) ||
-                                                                        Utils.isAutoDismissalEnabled(
-                                                                          alarm,
-                                                                        )
-                                                                    ? 15.0
-                                                                    : 18.0
-                                                                : Utils.isChallengeEnabled(
-                                                                          alarm,
-                                                                        ) ||
-                                                                        Utils.isAutoDismissalEnabled(
-                                                                          alarm,
-                                                                        )
-                                                                    ? 8.0
-                                                                    : 0.0,
-                                                          ),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Expanded(
-                                                                flex: 3,
-                                                                child:
-                                                                Column(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment.center,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    IntrinsicHeight(
-                                                                      child:
-                                                                          Row(
-                                                                        children: [
-                                                                          Text(
-                                                                            repeatDays.replaceAll(
-                                                                              'Never'.tr,
-                                                                              'One Time'.tr,
-                                                                            ),
-                                                                            style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                  color: alarm.isEnabled == true
-                                                                                      ? kprimaryColor
-                                                                                      : themeController.primaryDisabledTextColor.value,
-                                                                                ),
-                                                                          ),
-                                                                          if (alarm.label.isNotEmpty)
-                                                                            VerticalDivider(
-                                                                              color: alarm.isEnabled == true
-                                                                                  ? kprimaryColor
-                                                                                  : themeController.primaryDisabledTextColor.value,
-                                                                              thickness: 1.4,
-                                                                              width: 6,
-                                                                              indent: 3.1,
-                                                                              endIndent: 3.1,
-                                                                            ),
-                                                                          Expanded(
-                                                                            child: Container(
-                                                                              child: Text(
-                                                                                alarm.label,
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                // Set overflow property here
-                                                                                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                                                                      fontWeight: FontWeight.w500,
-                                                                                      color: alarm.isEnabled == true
-                                                                                          ? kprimaryColor
-                                                                                          : themeController.primaryDisabledTextColor.value,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                    Row(
-                                                                      children: [
-                                                                        Text(
-                                                                          (settingsController.is24HrsEnabled.value
-                                                                              ? Utils.split24HourFormat(alarm.alarmTime)
-                                                                              : Utils.convertTo12HourFormat(
-                                                                                  alarm.alarmTime,
-                                                                                ))[0],
-                                                                          style: Theme.of(
-                                                                            context,
-                                                                          ).textTheme.displayLarge!.copyWith(
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: const EdgeInsets.symmetric(
-                                                                            horizontal: 3.0,
-                                                                          ),
-                                                                          child: Text(
-                                                                            (settingsController.is24HrsEnabled.value
-                                                                                ? Utils.split24HourFormat(alarm.alarmTime)
-                                                                                : Utils.convertTo12HourFormat(
-                                                                                    alarm.alarmTime,
-                                                                                  ))[1],
-                                                                            style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                                                                                  color: alarm.isEnabled == true
-                                                                                      ? themeController.primaryTextColor.value
-                                                                                      : themeController.primaryDisabledTextColor.value,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                    if (Utils.isChallengeEnabled(
-                                                                          alarm,
-                                                                        ) ||
-                                                                        Utils.isAutoDismissalEnabled(
-                                                                          alarm,
-                                                                        ) ||
-                                                                        alarm.isSharedAlarmEnabled)
-                                                                      Row(
-                                                                        mainAxisAlignment: MainAxisAlignment.start,
-                                                                        children: [
-                                                                          if (alarm.isSharedAlarmEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.share_arrival_time,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                          if (alarm.isLocationEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.location_pin,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                          if (alarm.isActivityEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.screen_lock_portrait,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                          if (alarm.isWeatherEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.cloudy_snowing,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                          if (alarm.isQrEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.qr_code_scanner,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                          if (alarm.isShakeEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.vibration,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                          if (alarm.isMathsEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.calculate,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                          if (alarm.isPedometerEnabled)
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                horizontal: 3.0,
-                                                                              ),
-                                                                              child: Icon(
-                                                                                Icons.directions_walk,
-                                                                                size: 24,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value.withOpacity(0.5)
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                            ),
-                                                                        ],
-                                                                      ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .symmetric(
-                                                                  horizontal:
-                                                                      10.0,
-                                                                ),
-                                                                child: controller
-                                                                        .inMultipleSelectMode
-                                                                        .value
-                                                                    ? Column(
-                                                                        // Showing the toggle button
-                                                                        mainAxisAlignment: MainAxisAlignment.center,
-                                                                        children: [
-                                                                          Expanded(
-                                                                            flex: 0,
-                                                                            child: ToggleButton(
-                                                                              controller: controller,
-                                                                              alarmIndex: index,
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      )
-                                                                    : Column(
-                                                                        // Showing the switch and pop up menu button
-                                                                        mainAxisAlignment: MainAxisAlignment.center,
-                                                                        children: [
-                                                                          Expanded(
-                                                                            flex: 0,
-                                                                            child: Switch.adaptive(
-                                                                              activeColor: ksecondaryColor,
-                                                                              value: alarm.isEnabled,
-                                                                              onChanged: (bool value) async {
-                                                                                Utils.hapticFeedback();
-                                                                                alarm.isEnabled = value;
-                                                                                if (alarm.isSharedAlarmEnabled == true) {
-                                                                                  await FirestoreDb.updateAlarm(alarm.ownerId, alarm);
-                                                                                } else {
-                                                                                  await IsarDb.updateAlarm(alarm);
-                                                                                }
-                                                                                controller.refreshTimer = true;
-                                                                                controller.refreshUpcomingAlarms();
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                          Expanded(
-                                                                            flex: 0,
-                                                                            child: PopupMenuButton(
-                                                                              onSelected: (value) async {
-                                                                                Utils.hapticFeedback();
-                                                                                if (value == 0) {
-                                                                                  Get.toNamed('/alarm-ring', arguments: {
-                                                                                    'alarm': alarm,
-                                                                                    'preview': true
-                                                                                  });
-                                                                                } else if (value == 1) {
-                                                                                  debugPrint(alarm.isSharedAlarmEnabled.toString());
-
-                                                                                        if (alarm.isSharedAlarmEnabled == true) {
-                                                                                          await FirestoreDb.deleteAlarm(controller.userModel.value, alarm.firestoreId!);
-                                                                                        } else {
-                                                                                          await IsarDb.deleteAlarm(alarm.isarId);
-                                                                                        }
-
-                                                                                        if (Get.isSnackbarOpen) {
-                                                                                          Get.closeAllSnackbars();
-                                                                                        }
-
-                                                                                        Get.snackbar(
-                                                                                          'Alarm deleted',
-                                                                                          'The alarm has been deleted.',
-                                                                                          duration: Duration(seconds: controller.duration.toInt()),
-                                                                                          snackPosition: SnackPosition.BOTTOM,
-                                                                                          margin: const EdgeInsets.symmetric(
-                                                                                            horizontal: 10,
-                                                                                            vertical: 15,
-                                                                                          ),
-                                                                                          mainButton: TextButton(
-                                                                                            onPressed: () async {
-                                                                                              if (alarm.isSharedAlarmEnabled == true) {
-                                                                                                await FirestoreDb.addAlarm(controller.userModel.value, alarm);
-                                                                                              } else {
-                                                                                                await IsarDb.addAlarm(alarm);
-                                                                                              }
-                                                                                            },
-                                                                                            child: const Text('Undo'),
-                                                                                          ),
-                                                                                        );
-
-                                                                                        String ringtoneName = alarm.ringtoneName;
-
-                                                                                        await AudioUtils.updateRingtoneCounterOfUsage(
-                                                                                          customRingtoneName: ringtoneName,
-                                                                                          counterUpdate: CounterUpdate.decrement,
-                                                                                        );
-
-                                                                                  controller.refreshTimer = true;
-                                                                                  controller.refreshUpcomingAlarms();
-                                                                                }
-                                                                              },
-                                                                              color: themeController.primaryBackgroundColor.value,
-                                                                              icon: Icon(
-                                                                                Icons.more_vert,
-                                                                                color: alarm.isEnabled == true
-                                                                                    ? themeController.primaryTextColor.value
-                                                                                    : themeController.primaryDisabledTextColor.value,
-                                                                              ),
-                                                                              itemBuilder: (context) {
-                                                                                return [
-                                                                                  PopupMenuItem<int>(
-                                                                                    value: 0,
-                                                                                    child: Text(
-                                                                                      'Preview Alarm'.tr,
-                                                                                      style: Theme.of(context).textTheme.bodyMedium,
-                                                                                    ),
-                                                                                  ),
-                                                                                  if (alarm.isSharedAlarmEnabled == false || (alarm.isSharedAlarmEnabled == true && alarm.ownerId == controller.userModel.value!.id))
-                                                                                    PopupMenuItem<int>(
-                                                                                      value: 1,
-                                                                                      child: Text(
-                                                                                        'Delete Alarm'.tr,
-                                                                                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                                                                              color: Colors.red,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                ];
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
+                                              );
+                                            }).toList(),
                                           ),
-                                        )
-                                      : SizedBox();
-                                      },
+                                        ),
+                                        SizedBox(height: height * 0.1),
+                                      ],
                                     );
                                   }
                                 },
                               );
                             } else {
-                              return const CircularProgressIndicator.adaptive(
+                              return CircularProgressIndicator.adaptive(
                                 backgroundColor: Colors.transparent,
                                 valueColor: AlwaysStoppedAnimation(
-                                  kprimaryColor,
+                                  themeController.primaryColor.value,
                                 ),
                               );
                             }
@@ -1091,7 +615,7 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   Future<bool> showDeleteAlarmConfirmationPopupOnSwipe(
@@ -1113,9 +637,11 @@ class HomeView extends GetView<HomeController> {
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
+
           Padding(
             padding: const EdgeInsets.only(
               top: 20,
+
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1126,7 +652,7 @@ class HomeView extends GetView<HomeController> {
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
-                      kprimaryTextColor.withOpacity(0.5),
+                      themeController.primaryTextColor.value.withOpacity(0.5),
                     ),
                   ),
                   child: Text(
@@ -1139,12 +665,12 @@ class HomeView extends GetView<HomeController> {
                     Get.back(result: true); // User confirmed
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(kprimaryColor),
+                    backgroundColor: MaterialStateProperty.all(themeController.primaryColor.value),
                   ),
                   child: Text(
                     'delete'.tr,
                     style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                          color: kprimaryBackgroundColor,
+                          color: themeController.secondaryTextColor.value,
                         ),
                   ),
                 ),

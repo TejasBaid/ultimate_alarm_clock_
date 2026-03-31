@@ -1,3 +1,4 @@
+import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -48,12 +49,12 @@ class DebugController extends GetxController {
       final fetchedLogs = await IsarDb().getLogs();
       logs.value = fetchedLogs.reversed.toList();
       applyFilters();
-      debugPrint('Debug screen: Successfully loaded ${fetchedLogs.length} logs');
+      debugPrint('Alarm History: Successfully loaded ${fetchedLogs.length} history entries');
     } catch (e) {
-      debugPrint('Debug screen: Error loading logs: $e');
+      debugPrint('Alarm History: Error loading history: $e');
       Get.snackbar(
         'Error',
-        'Error loading logs: $e',
+        'Error loading alarm history: $e',
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
@@ -116,14 +117,14 @@ class DebugController extends GetxController {
       filteredLogs.value = [];
       Get.snackbar(
         'Success',
-        'Logs cleared successfully',
+        'Alarm history cleared successfully',
         backgroundColor: Colors.green,
         colorText: Colors.white,
       );
     } catch (e) {
       Get.snackbar(
         'Error',
-        'Error clearing logs: $e',
+        'Error clearing alarm history: $e',
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
@@ -143,7 +144,7 @@ class DebugController extends GetxController {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: ColorScheme.light(
-              primary: kprimaryColor,
+              primary: Get.find<ThemeController>().primaryColor.value,
               onPrimary: Colors.white,
               surface: themeController.secondaryBackgroundColor.value,
               onSurface: themeController.primaryTextColor.value,
@@ -152,7 +153,7 @@ class DebugController extends GetxController {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: kprimaryColor,
+                foregroundColor: Get.find<ThemeController>().primaryColor.value,
               ),
             ),
             dialogBackgroundColor: themeController.secondaryBackgroundColor.value,

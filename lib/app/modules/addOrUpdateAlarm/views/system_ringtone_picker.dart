@@ -32,7 +32,7 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
             child: Obx(() => controller.isSystemRingtonesLoading.value
                 ? Center(
                     child: CircularProgressIndicator(
-                      color: kprimaryColor,
+                      color: Get.find<ThemeController>().primaryColor.value,
                     ),
                   )
                 : DefaultTabController(
@@ -40,9 +40,9 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
                     child: Column(
                       children: [
                         TabBar(
-                          labelColor: kprimaryColor,
+                          labelColor: Get.find<ThemeController>().primaryColor.value,
                           unselectedLabelColor: themeController.primaryTextColor.value,
-                          indicatorColor: kprimaryColor,
+                          indicatorColor: Get.find<ThemeController>().primaryColor.value,
                           tabs: const [
                             Tab(text: 'Alarms'),
                             Tab(text: 'Notifications'),
@@ -72,9 +72,9 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
         child: Column(
           children: [
             TabBar(
-              labelColor: kprimaryColor,
+              labelColor: Get.find<ThemeController>().primaryColor.value,
               unselectedLabelColor: themeController.primaryTextColor.value,
-              indicatorColor: kprimaryColor,
+              indicatorColor: Get.find<ThemeController>().primaryColor.value,
               tabs: const [
                 Tab(text: 'Alarms'),
                 Tab(text: 'Notifications'),
@@ -85,7 +85,7 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
               child: Obx(() => controller.isSystemRingtonesLoading.value
                   ? Center(
                       child: CircularProgressIndicator(
-                        color: kprimaryColor,
+                        color: Get.find<ThemeController>().primaryColor.value,
                       ),
                     )
                   : TabBarView(
@@ -108,7 +108,7 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
                       },
                       child: Text(
                         'Test Audio System',
-                        style: TextStyle(color: kprimaryColor),
+                        style: TextStyle(color: Get.find<ThemeController>().primaryColor.value),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -119,7 +119,7 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
                         Get.back();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: kprimaryColor,
+                        backgroundColor: Get.find<ThemeController>().primaryColor.value,
                       ),
                       child: Text(
                         'Done'.tr,
@@ -198,12 +198,12 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
                 : const EdgeInsets.only(bottom: 4),
             decoration: isFullScreen ? BoxDecoration(
               color: isSelected
-                  ? kprimaryColor.withOpacity(0.1)
+                  ? Get.find<ThemeController>().primaryColor.value.withOpacity(0.1)
                   : themeController.primaryBackgroundColor.value,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: isSelected
-                    ? kprimaryColor
+                    ? Get.find<ThemeController>().primaryColor.value
                     : themeController.primaryTextColor.value.withOpacity(0.1),
                 width: isSelected ? 2 : 1,
               ),
@@ -215,7 +215,7 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
               leading: isFullScreen ? Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: isSelected ? kprimaryColor : themeController.primaryTextColor.value.withOpacity(0.1),
+                  color: isSelected ? Get.find<ThemeController>().primaryColor.value : themeController.primaryTextColor.value.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -242,7 +242,7 @@ class SystemRingtonePicker extends GetView<AddOrUpdateAlarmController> {
                     onPressed: () => _playPreview(ringtone),
                     icon: Icon(
                       isPlaying ? Icons.stop_circle : Icons.play_circle,
-                      color: isPlaying ? Colors.red : kprimaryColor,
+                      color: isPlaying ? Colors.red : Get.find<ThemeController>().primaryColor.value,
                       size: isFullScreen ? 28 : 24,
                     ),
                   ),

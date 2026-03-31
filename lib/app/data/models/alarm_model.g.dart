@@ -17,243 +17,308 @@ const AlarmModelSchema = CollectionSchema(
   name: r'AlarmModel',
   id: 1796575337475990193,
   properties: {
-    r'activityInterval': PropertySchema(
+    r'activityConditionType': PropertySchema(
       id: 0,
+      name: r'activityConditionType',
+      type: IsarType.long,
+    ),
+    r'activityInterval': PropertySchema(
+      id: 1,
       name: r'activityInterval',
       type: IsarType.long,
     ),
     r'activityMonitor': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'activityMonitor',
       type: IsarType.long,
     ),
     r'alarmDate': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'alarmDate',
       type: IsarType.string,
     ),
     r'alarmID': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'alarmID',
       type: IsarType.string,
     ),
     r'alarmTime': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'alarmTime',
       type: IsarType.string,
     ),
     r'days': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'days',
       type: IsarType.boolList,
     ),
     r'deleteAfterGoesOff': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'deleteAfterGoesOff',
       type: IsarType.bool,
     ),
     r'firestoreId': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'firestoreId',
       type: IsarType.string,
     ),
     r'gradient': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'gradient',
       type: IsarType.long,
     ),
     r'guardian': PropertySchema(
-      id: 9,
+      id: 10,
       name: r'guardian',
       type: IsarType.string,
     ),
     r'guardianTimer': PropertySchema(
-      id: 10,
+      id: 11,
       name: r'guardianTimer',
       type: IsarType.long,
     ),
     r'intervalToAlarm': PropertySchema(
-      id: 11,
+      id: 12,
       name: r'intervalToAlarm',
       type: IsarType.long,
     ),
     r'isActivityEnabled': PropertySchema(
-      id: 12,
+      id: 13,
       name: r'isActivityEnabled',
       type: IsarType.bool,
     ),
     r'isCall': PropertySchema(
-      id: 13,
+      id: 14,
       name: r'isCall',
       type: IsarType.bool,
     ),
     r'isEnabled': PropertySchema(
-      id: 14,
+      id: 15,
       name: r'isEnabled',
       type: IsarType.bool,
     ),
     r'isGuardian': PropertySchema(
-      id: 15,
+      id: 16,
       name: r'isGuardian',
       type: IsarType.bool,
     ),
     r'isLocationEnabled': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'isLocationEnabled',
       type: IsarType.bool,
     ),
     r'isMathsEnabled': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'isMathsEnabled',
       type: IsarType.bool,
     ),
+    r'isMemoryEnabled': PropertySchema(
+      id: 19,
+      name: r'isMemoryEnabled',
+      type: IsarType.bool,
+    ),
     r'isOneTime': PropertySchema(
-      id: 18,
+      id: 20,
       name: r'isOneTime',
       type: IsarType.bool,
     ),
     r'isPedometerEnabled': PropertySchema(
-      id: 19,
+      id: 21,
       name: r'isPedometerEnabled',
       type: IsarType.bool,
     ),
     r'isQrEnabled': PropertySchema(
-      id: 20,
+      id: 22,
       name: r'isQrEnabled',
       type: IsarType.bool,
     ),
     r'isShakeEnabled': PropertySchema(
-      id: 21,
+      id: 23,
       name: r'isShakeEnabled',
       type: IsarType.bool,
     ),
     r'isSharedAlarmEnabled': PropertySchema(
-      id: 22,
+      id: 24,
       name: r'isSharedAlarmEnabled',
       type: IsarType.bool,
     ),
+    r'isSunriseEnabled': PropertySchema(
+      id: 25,
+      name: r'isSunriseEnabled',
+      type: IsarType.bool,
+    ),
+    r'isTimezoneEnabled': PropertySchema(
+      id: 26,
+      name: r'isTimezoneEnabled',
+      type: IsarType.bool,
+    ),
     r'isWeatherEnabled': PropertySchema(
-      id: 23,
+      id: 27,
       name: r'isWeatherEnabled',
       type: IsarType.bool,
     ),
     r'label': PropertySchema(
-      id: 24,
+      id: 28,
       name: r'label',
       type: IsarType.string,
     ),
     r'lastEditedUserId': PropertySchema(
-      id: 25,
+      id: 29,
       name: r'lastEditedUserId',
       type: IsarType.string,
     ),
     r'location': PropertySchema(
-      id: 26,
+      id: 30,
       name: r'location',
       type: IsarType.string,
     ),
+    r'locationConditionType': PropertySchema(
+      id: 31,
+      name: r'locationConditionType',
+      type: IsarType.long,
+    ),
     r'mainAlarmTime': PropertySchema(
-      id: 27,
+      id: 32,
       name: r'mainAlarmTime',
       type: IsarType.string,
     ),
     r'mathsDifficulty': PropertySchema(
-      id: 28,
+      id: 33,
       name: r'mathsDifficulty',
       type: IsarType.long,
     ),
     r'maxSnoozeCount': PropertySchema(
-      id: 29,
+      id: 34,
       name: r'maxSnoozeCount',
       type: IsarType.long,
     ),
     r'minutesSinceMidnight': PropertySchema(
-      id: 30,
+      id: 35,
       name: r'minutesSinceMidnight',
       type: IsarType.long,
     ),
     r'mutexLock': PropertySchema(
-      id: 31,
+      id: 36,
       name: r'mutexLock',
       type: IsarType.bool,
     ),
     r'note': PropertySchema(
-      id: 32,
+      id: 37,
       name: r'note',
       type: IsarType.string,
     ),
     r'numMathsQuestions': PropertySchema(
-      id: 33,
+      id: 38,
       name: r'numMathsQuestions',
       type: IsarType.long,
     ),
+    r'numMemoryRounds': PropertySchema(
+      id: 39,
+      name: r'numMemoryRounds',
+      type: IsarType.long,
+    ),
     r'numberOfSteps': PropertySchema(
-      id: 34,
+      id: 40,
       name: r'numberOfSteps',
       type: IsarType.long,
     ),
     r'ownerId': PropertySchema(
-      id: 35,
+      id: 41,
       name: r'ownerId',
       type: IsarType.string,
     ),
     r'ownerName': PropertySchema(
-      id: 36,
+      id: 42,
       name: r'ownerName',
       type: IsarType.string,
     ),
     r'profile': PropertySchema(
-      id: 37,
+      id: 43,
       name: r'profile',
       type: IsarType.string,
     ),
     r'qrValue': PropertySchema(
-      id: 38,
+      id: 44,
       name: r'qrValue',
       type: IsarType.string,
     ),
     r'ringOn': PropertySchema(
-      id: 39,
+      id: 45,
       name: r'ringOn',
       type: IsarType.bool,
     ),
     r'ringtoneName': PropertySchema(
-      id: 40,
+      id: 46,
       name: r'ringtoneName',
       type: IsarType.string,
     ),
     r'shakeTimes': PropertySchema(
-      id: 41,
+      id: 47,
       name: r'shakeTimes',
       type: IsarType.long,
     ),
     r'sharedUserIds': PropertySchema(
-      id: 42,
+      id: 48,
       name: r'sharedUserIds',
       type: IsarType.stringList,
     ),
     r'showMotivationalQuote': PropertySchema(
-      id: 43,
+      id: 49,
       name: r'showMotivationalQuote',
       type: IsarType.bool,
     ),
+    r'smartControlCombinationType': PropertySchema(
+      id: 50,
+      name: r'smartControlCombinationType',
+      type: IsarType.long,
+    ),
     r'snoozeDuration': PropertySchema(
-      id: 44,
+      id: 51,
       name: r'snoozeDuration',
       type: IsarType.long,
     ),
+    r'sunriseColorScheme': PropertySchema(
+      id: 52,
+      name: r'sunriseColorScheme',
+      type: IsarType.long,
+    ),
+    r'sunriseDuration': PropertySchema(
+      id: 53,
+      name: r'sunriseDuration',
+      type: IsarType.long,
+    ),
+    r'sunriseIntensity': PropertySchema(
+      id: 54,
+      name: r'sunriseIntensity',
+      type: IsarType.double,
+    ),
+    r'targetTimezoneOffset': PropertySchema(
+      id: 55,
+      name: r'targetTimezoneOffset',
+      type: IsarType.long,
+    ),
+    r'timezoneId': PropertySchema(
+      id: 56,
+      name: r'timezoneId',
+      type: IsarType.string,
+    ),
     r'volMax': PropertySchema(
-      id: 45,
+      id: 57,
       name: r'volMax',
       type: IsarType.double,
     ),
     r'volMin': PropertySchema(
-      id: 46,
+      id: 58,
       name: r'volMin',
       type: IsarType.double,
     ),
+    r'weatherConditionType': PropertySchema(
+      id: 59,
+      name: r'weatherConditionType',
+      type: IsarType.long,
+    ),
     r'weatherTypes': PropertySchema(
-      id: 47,
+      id: 60,
       name: r'weatherTypes',
       type: IsarType.longList,
     )
@@ -316,6 +381,7 @@ int _alarmModelEstimateSize(
       }
     }
   }
+  bytesCount += 3 + object.timezoneId.length * 3;
   bytesCount += 3 + object.weatherTypes.length * 8;
   return bytesCount;
 }
@@ -326,54 +392,67 @@ void _alarmModelSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeLong(offsets[0], object.activityInterval);
-  writer.writeLong(offsets[1], object.activityMonitor);
-  writer.writeString(offsets[2], object.alarmDate);
-  writer.writeString(offsets[3], object.alarmID);
-  writer.writeString(offsets[4], object.alarmTime);
-  writer.writeBoolList(offsets[5], object.days);
-  writer.writeBool(offsets[6], object.deleteAfterGoesOff);
-  writer.writeString(offsets[7], object.firestoreId);
-  writer.writeLong(offsets[8], object.gradient);
-  writer.writeString(offsets[9], object.guardian);
-  writer.writeLong(offsets[10], object.guardianTimer);
-  writer.writeLong(offsets[11], object.intervalToAlarm);
-  writer.writeBool(offsets[12], object.isActivityEnabled);
-  writer.writeBool(offsets[13], object.isCall);
-  writer.writeBool(offsets[14], object.isEnabled);
-  writer.writeBool(offsets[15], object.isGuardian);
-  writer.writeBool(offsets[16], object.isLocationEnabled);
-  writer.writeBool(offsets[17], object.isMathsEnabled);
-  writer.writeBool(offsets[18], object.isOneTime);
-  writer.writeBool(offsets[19], object.isPedometerEnabled);
-  writer.writeBool(offsets[20], object.isQrEnabled);
-  writer.writeBool(offsets[21], object.isShakeEnabled);
-  writer.writeBool(offsets[22], object.isSharedAlarmEnabled);
-  writer.writeBool(offsets[23], object.isWeatherEnabled);
-  writer.writeString(offsets[24], object.label);
-  writer.writeString(offsets[25], object.lastEditedUserId);
-  writer.writeString(offsets[26], object.location);
-  writer.writeString(offsets[27], object.mainAlarmTime);
-  writer.writeLong(offsets[28], object.mathsDifficulty);
-  writer.writeLong(offsets[29], object.maxSnoozeCount);
-  writer.writeLong(offsets[30], object.minutesSinceMidnight);
-  writer.writeBool(offsets[31], object.mutexLock);
-  writer.writeString(offsets[32], object.note);
-  writer.writeLong(offsets[33], object.numMathsQuestions);
-  writer.writeLong(offsets[34], object.numberOfSteps);
-  writer.writeString(offsets[35], object.ownerId);
-  writer.writeString(offsets[36], object.ownerName);
-  writer.writeString(offsets[37], object.profile);
-  writer.writeString(offsets[38], object.qrValue);
-  writer.writeBool(offsets[39], object.ringOn);
-  writer.writeString(offsets[40], object.ringtoneName);
-  writer.writeLong(offsets[41], object.shakeTimes);
-  writer.writeStringList(offsets[42], object.sharedUserIds);
-  writer.writeBool(offsets[43], object.showMotivationalQuote);
-  writer.writeLong(offsets[44], object.snoozeDuration);
-  writer.writeDouble(offsets[45], object.volMax);
-  writer.writeDouble(offsets[46], object.volMin);
-  writer.writeLongList(offsets[47], object.weatherTypes);
+  writer.writeLong(offsets[0], object.activityConditionType);
+  writer.writeLong(offsets[1], object.activityInterval);
+  writer.writeLong(offsets[2], object.activityMonitor);
+  writer.writeString(offsets[3], object.alarmDate);
+  writer.writeString(offsets[4], object.alarmID);
+  writer.writeString(offsets[5], object.alarmTime);
+  writer.writeBoolList(offsets[6], object.days);
+  writer.writeBool(offsets[7], object.deleteAfterGoesOff);
+  writer.writeString(offsets[8], object.firestoreId);
+  writer.writeLong(offsets[9], object.gradient);
+  writer.writeString(offsets[10], object.guardian);
+  writer.writeLong(offsets[11], object.guardianTimer);
+  writer.writeLong(offsets[12], object.intervalToAlarm);
+  writer.writeBool(offsets[13], object.isActivityEnabled);
+  writer.writeBool(offsets[14], object.isCall);
+  writer.writeBool(offsets[15], object.isEnabled);
+  writer.writeBool(offsets[16], object.isGuardian);
+  writer.writeBool(offsets[17], object.isLocationEnabled);
+  writer.writeBool(offsets[18], object.isMathsEnabled);
+  writer.writeBool(offsets[19], object.isMemoryEnabled);
+  writer.writeBool(offsets[20], object.isOneTime);
+  writer.writeBool(offsets[21], object.isPedometerEnabled);
+  writer.writeBool(offsets[22], object.isQrEnabled);
+  writer.writeBool(offsets[23], object.isShakeEnabled);
+  writer.writeBool(offsets[24], object.isSharedAlarmEnabled);
+  writer.writeBool(offsets[25], object.isSunriseEnabled);
+  writer.writeBool(offsets[26], object.isTimezoneEnabled);
+  writer.writeBool(offsets[27], object.isWeatherEnabled);
+  writer.writeString(offsets[28], object.label);
+  writer.writeString(offsets[29], object.lastEditedUserId);
+  writer.writeString(offsets[30], object.location);
+  writer.writeLong(offsets[31], object.locationConditionType);
+  writer.writeString(offsets[32], object.mainAlarmTime);
+  writer.writeLong(offsets[33], object.mathsDifficulty);
+  writer.writeLong(offsets[34], object.maxSnoozeCount);
+  writer.writeLong(offsets[35], object.minutesSinceMidnight);
+  writer.writeBool(offsets[36], object.mutexLock);
+  writer.writeString(offsets[37], object.note);
+  writer.writeLong(offsets[38], object.numMathsQuestions);
+  writer.writeLong(offsets[39], object.numMemoryRounds);
+  writer.writeLong(offsets[40], object.numberOfSteps);
+  writer.writeString(offsets[41], object.ownerId);
+  writer.writeString(offsets[42], object.ownerName);
+  writer.writeString(offsets[43], object.profile);
+  writer.writeString(offsets[44], object.qrValue);
+  writer.writeBool(offsets[45], object.ringOn);
+  writer.writeString(offsets[46], object.ringtoneName);
+  writer.writeLong(offsets[47], object.shakeTimes);
+  writer.writeStringList(offsets[48], object.sharedUserIds);
+  writer.writeBool(offsets[49], object.showMotivationalQuote);
+  writer.writeLong(offsets[50], object.smartControlCombinationType);
+  writer.writeLong(offsets[51], object.snoozeDuration);
+  writer.writeLong(offsets[52], object.sunriseColorScheme);
+  writer.writeLong(offsets[53], object.sunriseDuration);
+  writer.writeDouble(offsets[54], object.sunriseIntensity);
+  writer.writeLong(offsets[55], object.targetTimezoneOffset);
+  writer.writeString(offsets[56], object.timezoneId);
+  writer.writeDouble(offsets[57], object.volMax);
+  writer.writeDouble(offsets[58], object.volMin);
+  writer.writeLong(offsets[59], object.weatherConditionType);
+  writer.writeLongList(offsets[60], object.weatherTypes);
 }
 
 AlarmModel _alarmModelDeserialize(
@@ -383,55 +462,68 @@ AlarmModel _alarmModelDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = AlarmModel(
-    activityInterval: reader.readLong(offsets[0]),
-    activityMonitor: reader.readLong(offsets[1]),
-    alarmDate: reader.readString(offsets[2]),
-    alarmID: reader.readString(offsets[3]),
-    alarmTime: reader.readString(offsets[4]),
-    days: reader.readBoolList(offsets[5]) ?? [],
-    deleteAfterGoesOff: reader.readBool(offsets[6]),
-    gradient: reader.readLong(offsets[8]),
-    guardian: reader.readString(offsets[9]),
-    guardianTimer: reader.readLong(offsets[10]),
-    intervalToAlarm: reader.readLong(offsets[11]),
-    isActivityEnabled: reader.readBool(offsets[12]),
-    isCall: reader.readBool(offsets[13]),
-    isEnabled: reader.readBoolOrNull(offsets[14]) ?? true,
-    isGuardian: reader.readBool(offsets[15]),
-    isLocationEnabled: reader.readBool(offsets[16]),
-    isMathsEnabled: reader.readBool(offsets[17]),
-    isOneTime: reader.readBool(offsets[18]),
-    isPedometerEnabled: reader.readBool(offsets[19]),
-    isQrEnabled: reader.readBool(offsets[20]),
-    isShakeEnabled: reader.readBool(offsets[21]),
-    isSharedAlarmEnabled: reader.readBool(offsets[22]),
-    isWeatherEnabled: reader.readBool(offsets[23]),
-    label: reader.readString(offsets[24]),
-    lastEditedUserId: reader.readString(offsets[25]),
-    location: reader.readString(offsets[26]),
-    mainAlarmTime: reader.readStringOrNull(offsets[27]),
-    mathsDifficulty: reader.readLong(offsets[28]),
-    maxSnoozeCount: reader.readLongOrNull(offsets[29]) ?? 3,
-    minutesSinceMidnight: reader.readLong(offsets[30]),
-    mutexLock: reader.readBool(offsets[31]),
-    note: reader.readString(offsets[32]),
-    numMathsQuestions: reader.readLong(offsets[33]),
-    numberOfSteps: reader.readLong(offsets[34]),
-    ownerId: reader.readString(offsets[35]),
-    ownerName: reader.readString(offsets[36]),
-    profile: reader.readString(offsets[37]),
-    qrValue: reader.readString(offsets[38]),
-    ringOn: reader.readBool(offsets[39]),
-    ringtoneName: reader.readString(offsets[40]),
-    shakeTimes: reader.readLong(offsets[41]),
-    sharedUserIds: reader.readStringList(offsets[42]),
-    showMotivationalQuote: reader.readBool(offsets[43]),
-    snoozeDuration: reader.readLong(offsets[44]),
-    volMax: reader.readDouble(offsets[45]),
-    volMin: reader.readDouble(offsets[46]),
-    weatherTypes: reader.readLongList(offsets[47]) ?? [],
+    activityConditionType: reader.readLong(offsets[0]),
+    activityInterval: reader.readLong(offsets[1]),
+    activityMonitor: reader.readLong(offsets[2]),
+    alarmDate: reader.readString(offsets[3]),
+    alarmID: reader.readString(offsets[4]),
+    alarmTime: reader.readString(offsets[5]),
+    days: reader.readBoolList(offsets[6]) ?? [],
+    deleteAfterGoesOff: reader.readBool(offsets[7]),
+    gradient: reader.readLong(offsets[9]),
+    guardian: reader.readString(offsets[10]),
+    guardianTimer: reader.readLong(offsets[11]),
+    intervalToAlarm: reader.readLong(offsets[12]),
+    isActivityEnabled: reader.readBool(offsets[13]),
+    isCall: reader.readBool(offsets[14]),
+    isEnabled: reader.readBoolOrNull(offsets[15]) ?? true,
+    isGuardian: reader.readBool(offsets[16]),
+    isLocationEnabled: reader.readBool(offsets[17]),
+    isMathsEnabled: reader.readBool(offsets[18]),
+    isMemoryEnabled: reader.readBool(offsets[19]),
+    isOneTime: reader.readBool(offsets[20]),
+    isPedometerEnabled: reader.readBool(offsets[21]),
+    isQrEnabled: reader.readBool(offsets[22]),
+    isShakeEnabled: reader.readBool(offsets[23]),
+    isSharedAlarmEnabled: reader.readBool(offsets[24]),
+    isSunriseEnabled: reader.readBool(offsets[25]),
+    isTimezoneEnabled: reader.readBoolOrNull(offsets[26]) ?? false,
+    isWeatherEnabled: reader.readBool(offsets[27]),
+    label: reader.readString(offsets[28]),
+    lastEditedUserId: reader.readString(offsets[29]),
+    location: reader.readString(offsets[30]),
+    locationConditionType: reader.readLong(offsets[31]),
+    mainAlarmTime: reader.readStringOrNull(offsets[32]),
+    mathsDifficulty: reader.readLong(offsets[33]),
+    maxSnoozeCount: reader.readLongOrNull(offsets[34]) ?? 3,
+    minutesSinceMidnight: reader.readLong(offsets[35]),
+    mutexLock: reader.readBool(offsets[36]),
+    note: reader.readString(offsets[37]),
+    numMathsQuestions: reader.readLong(offsets[38]),
+    numMemoryRounds: reader.readLong(offsets[39]),
+    numberOfSteps: reader.readLong(offsets[40]),
+    ownerId: reader.readString(offsets[41]),
+    ownerName: reader.readString(offsets[42]),
+    profile: reader.readString(offsets[43]),
+    qrValue: reader.readString(offsets[44]),
+    ringOn: reader.readBool(offsets[45]),
+    ringtoneName: reader.readString(offsets[46]),
+    shakeTimes: reader.readLong(offsets[47]),
+    sharedUserIds: reader.readStringList(offsets[48]),
+    showMotivationalQuote: reader.readBool(offsets[49]),
+    smartControlCombinationType: reader.readLongOrNull(offsets[50]) ?? 0,
+    snoozeDuration: reader.readLong(offsets[51]),
+    sunriseColorScheme: reader.readLong(offsets[52]),
+    sunriseDuration: reader.readLong(offsets[53]),
+    sunriseIntensity: reader.readDouble(offsets[54]),
+    targetTimezoneOffset: reader.readLongOrNull(offsets[55]) ?? 0,
+    timezoneId: reader.readStringOrNull(offsets[56]) ?? '',
+    volMax: reader.readDouble(offsets[57]),
+    volMin: reader.readDouble(offsets[58]),
+    weatherConditionType: reader.readLong(offsets[59]),
+    weatherTypes: reader.readLongList(offsets[60]) ?? [],
   );
-  object.firestoreId = reader.readStringOrNull(offsets[7]);
+  object.firestoreId = reader.readStringOrNull(offsets[8]);
   object.isarId = id;
   return object;
 }
@@ -448,33 +540,33 @@ P _alarmModelDeserializeProp<P>(
     case 1:
       return (reader.readLong(offset)) as P;
     case 2:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 3:
       return (reader.readString(offset)) as P;
     case 4:
       return (reader.readString(offset)) as P;
     case 5:
-      return (reader.readBoolList(offset) ?? []) as P;
-    case 6:
-      return (reader.readBool(offset)) as P;
-    case 7:
-      return (reader.readStringOrNull(offset)) as P;
-    case 8:
-      return (reader.readLong(offset)) as P;
-    case 9:
       return (reader.readString(offset)) as P;
-    case 10:
+    case 6:
+      return (reader.readBoolList(offset) ?? []) as P;
+    case 7:
+      return (reader.readBool(offset)) as P;
+    case 8:
+      return (reader.readStringOrNull(offset)) as P;
+    case 9:
       return (reader.readLong(offset)) as P;
+    case 10:
+      return (reader.readString(offset)) as P;
     case 11:
       return (reader.readLong(offset)) as P;
     case 12:
-      return (reader.readBool(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 13:
       return (reader.readBool(offset)) as P;
     case 14:
-      return (reader.readBoolOrNull(offset) ?? true) as P;
-    case 15:
       return (reader.readBool(offset)) as P;
+    case 15:
+      return (reader.readBoolOrNull(offset) ?? true) as P;
     case 16:
       return (reader.readBool(offset)) as P;
     case 17:
@@ -492,52 +584,78 @@ P _alarmModelDeserializeProp<P>(
     case 23:
       return (reader.readBool(offset)) as P;
     case 24:
-      return (reader.readString(offset)) as P;
-    case 25:
-      return (reader.readString(offset)) as P;
-    case 26:
-      return (reader.readString(offset)) as P;
-    case 27:
-      return (reader.readStringOrNull(offset)) as P;
-    case 28:
-      return (reader.readLong(offset)) as P;
-    case 29:
-      return (reader.readLongOrNull(offset) ?? 3) as P;
-    case 30:
-      return (reader.readLong(offset)) as P;
-    case 31:
       return (reader.readBool(offset)) as P;
-    case 32:
+    case 25:
+      return (reader.readBool(offset)) as P;
+    case 26:
+      return (reader.readBoolOrNull(offset) ?? false) as P;
+    case 27:
+      return (reader.readBool(offset)) as P;
+    case 28:
       return (reader.readString(offset)) as P;
+    case 29:
+      return (reader.readString(offset)) as P;
+    case 30:
+      return (reader.readString(offset)) as P;
+    case 31:
+      return (reader.readLong(offset)) as P;
+    case 32:
+      return (reader.readStringOrNull(offset)) as P;
     case 33:
       return (reader.readLong(offset)) as P;
     case 34:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset) ?? 3) as P;
     case 35:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 36:
-      return (reader.readString(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 37:
       return (reader.readString(offset)) as P;
     case 38:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 39:
-      return (reader.readBool(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 40:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 41:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 42:
-      return (reader.readStringList(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 43:
-      return (reader.readBool(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 44:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 45:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 46:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 47:
+      return (reader.readLong(offset)) as P;
+    case 48:
+      return (reader.readStringList(offset)) as P;
+    case 49:
+      return (reader.readBool(offset)) as P;
+    case 50:
+      return (reader.readLongOrNull(offset) ?? 0) as P;
+    case 51:
+      return (reader.readLong(offset)) as P;
+    case 52:
+      return (reader.readLong(offset)) as P;
+    case 53:
+      return (reader.readLong(offset)) as P;
+    case 54:
+      return (reader.readDouble(offset)) as P;
+    case 55:
+      return (reader.readLongOrNull(offset) ?? 0) as P;
+    case 56:
+      return (reader.readStringOrNull(offset) ?? '') as P;
+    case 57:
+      return (reader.readDouble(offset)) as P;
+    case 58:
+      return (reader.readDouble(offset)) as P;
+    case 59:
+      return (reader.readLong(offset)) as P;
+    case 60:
       return (reader.readLongList(offset) ?? []) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -639,6 +757,62 @@ extension AlarmModelQueryWhere
 
 extension AlarmModelQueryFilter
     on QueryBuilder<AlarmModel, AlarmModel, QFilterCondition> {
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      activityConditionTypeEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'activityConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      activityConditionTypeGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'activityConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      activityConditionTypeLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'activityConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      activityConditionTypeBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'activityConditionType',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
       activityIntervalEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
@@ -1771,6 +1945,16 @@ extension AlarmModelQueryFilter
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      isMemoryEnabledEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isMemoryEnabled',
+        value: value,
+      ));
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition> isOneTimeEqualTo(
       bool value) {
     return QueryBuilder.apply(this, (query) {
@@ -1816,6 +2000,26 @@ extension AlarmModelQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'isSharedAlarmEnabled',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      isSunriseEnabledEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isSunriseEnabled',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      isTimezoneEnabledEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isTimezoneEnabled',
         value: value,
       ));
     });
@@ -2281,6 +2485,62 @@ extension AlarmModelQueryFilter
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'location',
         value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      locationConditionTypeEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'locationConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      locationConditionTypeGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'locationConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      locationConditionTypeLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'locationConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      locationConditionTypeBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'locationConditionType',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
       ));
     });
   }
@@ -2795,6 +3055,62 @@ extension AlarmModelQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
         property: r'numMathsQuestions',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      numMemoryRoundsEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'numMemoryRounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      numMemoryRoundsGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'numMemoryRounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      numMemoryRoundsLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'numMemoryRounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      numMemoryRoundsBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'numMemoryRounds',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -3844,6 +4160,62 @@ extension AlarmModelQueryFilter
   }
 
   QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      smartControlCombinationTypeEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'smartControlCombinationType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      smartControlCombinationTypeGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'smartControlCombinationType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      smartControlCombinationTypeLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'smartControlCombinationType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      smartControlCombinationTypeBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'smartControlCombinationType',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
       snoozeDurationEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -3895,6 +4267,375 @@ extension AlarmModelQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseColorSchemeEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sunriseColorScheme',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseColorSchemeGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'sunriseColorScheme',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseColorSchemeLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'sunriseColorScheme',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseColorSchemeBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'sunriseColorScheme',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseDurationEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sunriseDuration',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseDurationGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'sunriseDuration',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseDurationLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'sunriseDuration',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseDurationBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'sunriseDuration',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseIntensityEqualTo(
+    double value, {
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sunriseIntensity',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseIntensityGreaterThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'sunriseIntensity',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseIntensityLessThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'sunriseIntensity',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      sunriseIntensityBetween(
+    double lower,
+    double upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'sunriseIntensity',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      targetTimezoneOffsetEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'targetTimezoneOffset',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      targetTimezoneOffsetGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'targetTimezoneOffset',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      targetTimezoneOffsetLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'targetTimezoneOffset',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      targetTimezoneOffsetBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'targetTimezoneOffset',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition> timezoneIdEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'timezoneId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      timezoneIdGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'timezoneId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      timezoneIdLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'timezoneId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition> timezoneIdBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'timezoneId',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      timezoneIdStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'timezoneId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      timezoneIdEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'timezoneId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      timezoneIdContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'timezoneId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition> timezoneIdMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'timezoneId',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      timezoneIdIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'timezoneId',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      timezoneIdIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'timezoneId',
+        value: '',
       ));
     });
   }
@@ -4019,6 +4760,62 @@ extension AlarmModelQueryFilter
         upper: upper,
         includeUpper: includeUpper,
         epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      weatherConditionTypeEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'weatherConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      weatherConditionTypeGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'weatherConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      weatherConditionTypeLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'weatherConditionType',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterFilterCondition>
+      weatherConditionTypeBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'weatherConditionType',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
       ));
     });
   }
@@ -4177,6 +4974,20 @@ extension AlarmModelQueryLinks
 
 extension AlarmModelQuerySortBy
     on QueryBuilder<AlarmModel, AlarmModel, QSortBy> {
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByActivityConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'activityConditionType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByActivityConditionTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'activityConditionType', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByActivityInterval() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'activityInterval', Sort.asc);
@@ -4389,6 +5200,19 @@ extension AlarmModelQuerySortBy
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByIsMemoryEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByIsMemoryEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByIsOneTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isOneTime', Sort.asc);
@@ -4454,6 +5278,32 @@ extension AlarmModelQuerySortBy
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByIsSunriseEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByIsSunriseEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByIsTimezoneEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isTimezoneEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByIsTimezoneEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isTimezoneEnabled', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByIsWeatherEnabled() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isWeatherEnabled', Sort.asc);
@@ -4501,6 +5351,20 @@ extension AlarmModelQuerySortBy
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByLocationDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'location', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByLocationConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'locationConditionType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByLocationConditionTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'locationConditionType', Sort.desc);
     });
   }
 
@@ -4590,6 +5454,19 @@ extension AlarmModelQuerySortBy
       sortByNumMathsQuestionsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'numMathsQuestions', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByNumMemoryRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByNumMemoryRoundsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.desc);
     });
   }
 
@@ -4703,6 +5580,20 @@ extension AlarmModelQuerySortBy
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortBySmartControlCombinationType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'smartControlCombinationType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortBySmartControlCombinationTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'smartControlCombinationType', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortBySnoozeDuration() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoozeDuration', Sort.asc);
@@ -4713,6 +5604,72 @@ extension AlarmModelQuerySortBy
       sortBySnoozeDurationDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoozeDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortBySunriseColorScheme() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortBySunriseColorSchemeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortBySunriseDuration() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortBySunriseDurationDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortBySunriseIntensity() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortBySunriseIntensityDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByTargetTimezoneOffset() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'targetTimezoneOffset', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByTargetTimezoneOffsetDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'targetTimezoneOffset', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByTimezoneId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timezoneId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> sortByTimezoneIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timezoneId', Sort.desc);
     });
   }
 
@@ -4739,10 +5696,38 @@ extension AlarmModelQuerySortBy
       return query.addSortBy(r'volMin', Sort.desc);
     });
   }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByWeatherConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'weatherConditionType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      sortByWeatherConditionTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'weatherConditionType', Sort.desc);
+    });
+  }
 }
 
 extension AlarmModelQuerySortThenBy
     on QueryBuilder<AlarmModel, AlarmModel, QSortThenBy> {
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByActivityConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'activityConditionType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByActivityConditionTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'activityConditionType', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByActivityInterval() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'activityInterval', Sort.asc);
@@ -4955,6 +5940,19 @@ extension AlarmModelQuerySortThenBy
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByIsMemoryEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByIsMemoryEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByIsOneTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isOneTime', Sort.asc);
@@ -5020,6 +6018,32 @@ extension AlarmModelQuerySortThenBy
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByIsSunriseEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByIsSunriseEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByIsTimezoneEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isTimezoneEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByIsTimezoneEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isTimezoneEnabled', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByIsWeatherEnabled() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isWeatherEnabled', Sort.asc);
@@ -5079,6 +6103,20 @@ extension AlarmModelQuerySortThenBy
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByLocationDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'location', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByLocationConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'locationConditionType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByLocationConditionTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'locationConditionType', Sort.desc);
     });
   }
 
@@ -5168,6 +6206,19 @@ extension AlarmModelQuerySortThenBy
       thenByNumMathsQuestionsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'numMathsQuestions', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByNumMemoryRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByNumMemoryRoundsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.desc);
     });
   }
 
@@ -5281,6 +6332,20 @@ extension AlarmModelQuerySortThenBy
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenBySmartControlCombinationType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'smartControlCombinationType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenBySmartControlCombinationTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'smartControlCombinationType', Sort.desc);
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenBySnoozeDuration() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoozeDuration', Sort.asc);
@@ -5291,6 +6356,72 @@ extension AlarmModelQuerySortThenBy
       thenBySnoozeDurationDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoozeDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenBySunriseColorScheme() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenBySunriseColorSchemeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenBySunriseDuration() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenBySunriseDurationDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenBySunriseIntensity() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenBySunriseIntensityDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByTargetTimezoneOffset() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'targetTimezoneOffset', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByTargetTimezoneOffsetDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'targetTimezoneOffset', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByTimezoneId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timezoneId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy> thenByTimezoneIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'timezoneId', Sort.desc);
     });
   }
 
@@ -5317,10 +6448,31 @@ extension AlarmModelQuerySortThenBy
       return query.addSortBy(r'volMin', Sort.desc);
     });
   }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByWeatherConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'weatherConditionType', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QAfterSortBy>
+      thenByWeatherConditionTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'weatherConditionType', Sort.desc);
+    });
+  }
 }
 
 extension AlarmModelQueryWhereDistinct
     on QueryBuilder<AlarmModel, AlarmModel, QDistinct> {
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct>
+      distinctByActivityConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'activityConditionType');
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByActivityInterval() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'activityInterval');
@@ -5437,6 +6589,12 @@ extension AlarmModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByIsMemoryEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isMemoryEnabled');
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByIsOneTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isOneTime');
@@ -5469,6 +6627,19 @@ extension AlarmModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByIsSunriseEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isSunriseEnabled');
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct>
+      distinctByIsTimezoneEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isTimezoneEnabled');
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByIsWeatherEnabled() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isWeatherEnabled');
@@ -5494,6 +6665,13 @@ extension AlarmModelQueryWhereDistinct
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'location', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct>
+      distinctByLocationConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'locationConditionType');
     });
   }
 
@@ -5541,6 +6719,12 @@ extension AlarmModelQueryWhereDistinct
       distinctByNumMathsQuestions() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'numMathsQuestions');
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByNumMemoryRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'numMemoryRounds');
     });
   }
 
@@ -5610,9 +6794,49 @@ extension AlarmModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct>
+      distinctBySmartControlCombinationType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'smartControlCombinationType');
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctBySnoozeDuration() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'snoozeDuration');
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct>
+      distinctBySunriseColorScheme() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'sunriseColorScheme');
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctBySunriseDuration() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'sunriseDuration');
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctBySunriseIntensity() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'sunriseIntensity');
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct>
+      distinctByTargetTimezoneOffset() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'targetTimezoneOffset');
+    });
+  }
+
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByTimezoneId(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'timezoneId', caseSensitive: caseSensitive);
     });
   }
 
@@ -5628,6 +6852,13 @@ extension AlarmModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AlarmModel, AlarmModel, QDistinct>
+      distinctByWeatherConditionType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'weatherConditionType');
+    });
+  }
+
   QueryBuilder<AlarmModel, AlarmModel, QDistinct> distinctByWeatherTypes() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'weatherTypes');
@@ -5640,6 +6871,13 @@ extension AlarmModelQueryProperty
   QueryBuilder<AlarmModel, int, QQueryOperations> isarIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isarId');
+    });
+  }
+
+  QueryBuilder<AlarmModel, int, QQueryOperations>
+      activityConditionTypeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'activityConditionType');
     });
   }
 
@@ -5752,6 +6990,12 @@ extension AlarmModelQueryProperty
     });
   }
 
+  QueryBuilder<AlarmModel, bool, QQueryOperations> isMemoryEnabledProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isMemoryEnabled');
+    });
+  }
+
   QueryBuilder<AlarmModel, bool, QQueryOperations> isOneTimeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isOneTime');
@@ -5784,6 +7028,18 @@ extension AlarmModelQueryProperty
     });
   }
 
+  QueryBuilder<AlarmModel, bool, QQueryOperations> isSunriseEnabledProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isSunriseEnabled');
+    });
+  }
+
+  QueryBuilder<AlarmModel, bool, QQueryOperations> isTimezoneEnabledProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isTimezoneEnabled');
+    });
+  }
+
   QueryBuilder<AlarmModel, bool, QQueryOperations> isWeatherEnabledProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isWeatherEnabled');
@@ -5806,6 +7062,13 @@ extension AlarmModelQueryProperty
   QueryBuilder<AlarmModel, String, QQueryOperations> locationProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'location');
+    });
+  }
+
+  QueryBuilder<AlarmModel, int, QQueryOperations>
+      locationConditionTypeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'locationConditionType');
     });
   }
 
@@ -5849,6 +7112,12 @@ extension AlarmModelQueryProperty
   QueryBuilder<AlarmModel, int, QQueryOperations> numMathsQuestionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'numMathsQuestions');
+    });
+  }
+
+  QueryBuilder<AlarmModel, int, QQueryOperations> numMemoryRoundsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'numMemoryRounds');
     });
   }
 
@@ -5914,9 +7183,48 @@ extension AlarmModelQueryProperty
     });
   }
 
+  QueryBuilder<AlarmModel, int, QQueryOperations>
+      smartControlCombinationTypeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'smartControlCombinationType');
+    });
+  }
+
   QueryBuilder<AlarmModel, int, QQueryOperations> snoozeDurationProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'snoozeDuration');
+    });
+  }
+
+  QueryBuilder<AlarmModel, int, QQueryOperations> sunriseColorSchemeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'sunriseColorScheme');
+    });
+  }
+
+  QueryBuilder<AlarmModel, int, QQueryOperations> sunriseDurationProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'sunriseDuration');
+    });
+  }
+
+  QueryBuilder<AlarmModel, double, QQueryOperations>
+      sunriseIntensityProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'sunriseIntensity');
+    });
+  }
+
+  QueryBuilder<AlarmModel, int, QQueryOperations>
+      targetTimezoneOffsetProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'targetTimezoneOffset');
+    });
+  }
+
+  QueryBuilder<AlarmModel, String, QQueryOperations> timezoneIdProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'timezoneId');
     });
   }
 
@@ -5929,6 +7237,13 @@ extension AlarmModelQueryProperty
   QueryBuilder<AlarmModel, double, QQueryOperations> volMinProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'volMin');
+    });
+  }
+
+  QueryBuilder<AlarmModel, int, QQueryOperations>
+      weatherConditionTypeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'weatherConditionType');
     });
   }
 

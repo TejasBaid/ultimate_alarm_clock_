@@ -36,7 +36,7 @@ class PedometerChallengeView extends GetView<AlarmChallengeController> {
                 minHeight: 2,
                 value: controller.progress.value,
                 backgroundColor: Colors.grey,
-                valueColor: const AlwaysStoppedAnimation<Color>(kprimaryColor),
+                valueColor: AlwaysStoppedAnimation<Color>(Get.find<ThemeController>().primaryColor.value),
               ),
             ),
             Expanded(
@@ -82,7 +82,7 @@ class PedometerChallengeView extends GetView<AlarmChallengeController> {
                                           controller.stepsCount.value
                                       : 0)
                                   .toString(),
-                              style: const TextStyle(fontSize: 35),
+                              style: TextStyle(fontSize: 35),
                             ),
                           ),
                         ],

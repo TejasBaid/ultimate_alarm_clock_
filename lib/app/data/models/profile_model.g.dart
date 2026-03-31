@@ -97,143 +97,173 @@ const ProfileModelSchema = CollectionSchema(
       name: r'isMathsEnabled',
       type: IsarType.bool,
     ),
-    r'isOneTime': PropertySchema(
+    r'isMemoryEnabled': PropertySchema(
       id: 16,
+      name: r'isMemoryEnabled',
+      type: IsarType.bool,
+    ),
+    r'isOneTime': PropertySchema(
+      id: 17,
       name: r'isOneTime',
       type: IsarType.bool,
     ),
     r'isPedometerEnabled': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'isPedometerEnabled',
       type: IsarType.bool,
     ),
     r'isQrEnabled': PropertySchema(
-      id: 18,
+      id: 19,
       name: r'isQrEnabled',
       type: IsarType.bool,
     ),
     r'isShakeEnabled': PropertySchema(
-      id: 19,
+      id: 20,
       name: r'isShakeEnabled',
       type: IsarType.bool,
     ),
     r'isSharedAlarmEnabled': PropertySchema(
-      id: 20,
+      id: 21,
       name: r'isSharedAlarmEnabled',
       type: IsarType.bool,
     ),
+    r'isSunriseEnabled': PropertySchema(
+      id: 22,
+      name: r'isSunriseEnabled',
+      type: IsarType.bool,
+    ),
     r'isWeatherEnabled': PropertySchema(
-      id: 21,
+      id: 23,
       name: r'isWeatherEnabled',
       type: IsarType.bool,
     ),
     r'label': PropertySchema(
-      id: 22,
+      id: 24,
       name: r'label',
       type: IsarType.string,
     ),
     r'lastEditedUserId': PropertySchema(
-      id: 23,
+      id: 25,
       name: r'lastEditedUserId',
       type: IsarType.string,
     ),
     r'location': PropertySchema(
-      id: 24,
+      id: 26,
       name: r'location',
       type: IsarType.string,
     ),
     r'mathsDifficulty': PropertySchema(
-      id: 25,
+      id: 27,
       name: r'mathsDifficulty',
       type: IsarType.long,
     ),
     r'minutesSinceMidnight': PropertySchema(
-      id: 26,
+      id: 28,
       name: r'minutesSinceMidnight',
       type: IsarType.long,
     ),
     r'mutexLock': PropertySchema(
-      id: 27,
+      id: 29,
       name: r'mutexLock',
       type: IsarType.bool,
     ),
     r'note': PropertySchema(
-      id: 28,
+      id: 30,
       name: r'note',
       type: IsarType.string,
     ),
     r'numMathsQuestions': PropertySchema(
-      id: 29,
+      id: 31,
       name: r'numMathsQuestions',
       type: IsarType.long,
     ),
+    r'numMemoryRounds': PropertySchema(
+      id: 32,
+      name: r'numMemoryRounds',
+      type: IsarType.long,
+    ),
     r'numberOfSteps': PropertySchema(
-      id: 30,
+      id: 33,
       name: r'numberOfSteps',
       type: IsarType.long,
     ),
     r'ownerId': PropertySchema(
-      id: 31,
+      id: 34,
       name: r'ownerId',
       type: IsarType.string,
     ),
     r'ownerName': PropertySchema(
-      id: 32,
+      id: 35,
       name: r'ownerName',
       type: IsarType.string,
     ),
     r'profileName': PropertySchema(
-      id: 33,
+      id: 36,
       name: r'profileName',
       type: IsarType.string,
     ),
     r'qrValue': PropertySchema(
-      id: 34,
+      id: 37,
       name: r'qrValue',
       type: IsarType.string,
     ),
     r'ringOn': PropertySchema(
-      id: 35,
+      id: 38,
       name: r'ringOn',
       type: IsarType.bool,
     ),
     r'ringtoneName': PropertySchema(
-      id: 36,
+      id: 39,
       name: r'ringtoneName',
       type: IsarType.string,
     ),
     r'shakeTimes': PropertySchema(
-      id: 37,
+      id: 40,
       name: r'shakeTimes',
       type: IsarType.long,
     ),
     r'sharedUserIds': PropertySchema(
-      id: 38,
+      id: 41,
       name: r'sharedUserIds',
       type: IsarType.stringList,
     ),
     r'showMotivationalQuote': PropertySchema(
-      id: 39,
+      id: 42,
       name: r'showMotivationalQuote',
       type: IsarType.bool,
     ),
     r'snoozeDuration': PropertySchema(
-      id: 40,
+      id: 43,
       name: r'snoozeDuration',
       type: IsarType.long,
     ),
+    r'sunriseColorScheme': PropertySchema(
+      id: 44,
+      name: r'sunriseColorScheme',
+      type: IsarType.long,
+    ),
+    r'sunriseDuration': PropertySchema(
+      id: 45,
+      name: r'sunriseDuration',
+      type: IsarType.long,
+    ),
+    r'sunriseIntensity': PropertySchema(
+      id: 46,
+      name: r'sunriseIntensity',
+      type: IsarType.double,
+    ),
     r'volMax': PropertySchema(
-      id: 41,
+      id: 47,
       name: r'volMax',
       type: IsarType.double,
     ),
     r'volMin': PropertySchema(
-      id: 42,
+      id: 48,
       name: r'volMin',
       type: IsarType.double,
     ),
     r'weatherTypes': PropertySchema(
-      id: 43,
+      id: 49,
       name: r'weatherTypes',
       type: IsarType.longList,
     )
@@ -314,34 +344,40 @@ void _profileModelSerialize(
   writer.writeBool(offsets[13], object.isGuardian);
   writer.writeBool(offsets[14], object.isLocationEnabled);
   writer.writeBool(offsets[15], object.isMathsEnabled);
-  writer.writeBool(offsets[16], object.isOneTime);
-  writer.writeBool(offsets[17], object.isPedometerEnabled);
-  writer.writeBool(offsets[18], object.isQrEnabled);
-  writer.writeBool(offsets[19], object.isShakeEnabled);
-  writer.writeBool(offsets[20], object.isSharedAlarmEnabled);
-  writer.writeBool(offsets[21], object.isWeatherEnabled);
-  writer.writeString(offsets[22], object.label);
-  writer.writeString(offsets[23], object.lastEditedUserId);
-  writer.writeString(offsets[24], object.location);
-  writer.writeLong(offsets[25], object.mathsDifficulty);
-  writer.writeLong(offsets[26], object.minutesSinceMidnight);
-  writer.writeBool(offsets[27], object.mutexLock);
-  writer.writeString(offsets[28], object.note);
-  writer.writeLong(offsets[29], object.numMathsQuestions);
-  writer.writeLong(offsets[30], object.numberOfSteps);
-  writer.writeString(offsets[31], object.ownerId);
-  writer.writeString(offsets[32], object.ownerName);
-  writer.writeString(offsets[33], object.profileName);
-  writer.writeString(offsets[34], object.qrValue);
-  writer.writeBool(offsets[35], object.ringOn);
-  writer.writeString(offsets[36], object.ringtoneName);
-  writer.writeLong(offsets[37], object.shakeTimes);
-  writer.writeStringList(offsets[38], object.sharedUserIds);
-  writer.writeBool(offsets[39], object.showMotivationalQuote);
-  writer.writeLong(offsets[40], object.snoozeDuration);
-  writer.writeDouble(offsets[41], object.volMax);
-  writer.writeDouble(offsets[42], object.volMin);
-  writer.writeLongList(offsets[43], object.weatherTypes);
+  writer.writeBool(offsets[16], object.isMemoryEnabled);
+  writer.writeBool(offsets[17], object.isOneTime);
+  writer.writeBool(offsets[18], object.isPedometerEnabled);
+  writer.writeBool(offsets[19], object.isQrEnabled);
+  writer.writeBool(offsets[20], object.isShakeEnabled);
+  writer.writeBool(offsets[21], object.isSharedAlarmEnabled);
+  writer.writeBool(offsets[22], object.isSunriseEnabled);
+  writer.writeBool(offsets[23], object.isWeatherEnabled);
+  writer.writeString(offsets[24], object.label);
+  writer.writeString(offsets[25], object.lastEditedUserId);
+  writer.writeString(offsets[26], object.location);
+  writer.writeLong(offsets[27], object.mathsDifficulty);
+  writer.writeLong(offsets[28], object.minutesSinceMidnight);
+  writer.writeBool(offsets[29], object.mutexLock);
+  writer.writeString(offsets[30], object.note);
+  writer.writeLong(offsets[31], object.numMathsQuestions);
+  writer.writeLong(offsets[32], object.numMemoryRounds);
+  writer.writeLong(offsets[33], object.numberOfSteps);
+  writer.writeString(offsets[34], object.ownerId);
+  writer.writeString(offsets[35], object.ownerName);
+  writer.writeString(offsets[36], object.profileName);
+  writer.writeString(offsets[37], object.qrValue);
+  writer.writeBool(offsets[38], object.ringOn);
+  writer.writeString(offsets[39], object.ringtoneName);
+  writer.writeLong(offsets[40], object.shakeTimes);
+  writer.writeStringList(offsets[41], object.sharedUserIds);
+  writer.writeBool(offsets[42], object.showMotivationalQuote);
+  writer.writeLong(offsets[43], object.snoozeDuration);
+  writer.writeLong(offsets[44], object.sunriseColorScheme);
+  writer.writeLong(offsets[45], object.sunriseDuration);
+  writer.writeDouble(offsets[46], object.sunriseIntensity);
+  writer.writeDouble(offsets[47], object.volMax);
+  writer.writeDouble(offsets[48], object.volMin);
+  writer.writeLongList(offsets[49], object.weatherTypes);
 }
 
 ProfileModel _profileModelDeserialize(
@@ -366,34 +402,40 @@ ProfileModel _profileModelDeserialize(
     isGuardian: reader.readBool(offsets[13]),
     isLocationEnabled: reader.readBool(offsets[14]),
     isMathsEnabled: reader.readBool(offsets[15]),
-    isOneTime: reader.readBool(offsets[16]),
-    isPedometerEnabled: reader.readBool(offsets[17]),
-    isQrEnabled: reader.readBool(offsets[18]),
-    isShakeEnabled: reader.readBool(offsets[19]),
-    isSharedAlarmEnabled: reader.readBool(offsets[20]),
-    isWeatherEnabled: reader.readBool(offsets[21]),
-    label: reader.readString(offsets[22]),
-    lastEditedUserId: reader.readString(offsets[23]),
-    location: reader.readString(offsets[24]),
-    mathsDifficulty: reader.readLong(offsets[25]),
-    minutesSinceMidnight: reader.readLong(offsets[26]),
-    mutexLock: reader.readBool(offsets[27]),
-    note: reader.readString(offsets[28]),
-    numMathsQuestions: reader.readLong(offsets[29]),
-    numberOfSteps: reader.readLong(offsets[30]),
-    ownerId: reader.readString(offsets[31]),
-    ownerName: reader.readString(offsets[32]),
-    profileName: reader.readString(offsets[33]),
-    qrValue: reader.readString(offsets[34]),
-    ringOn: reader.readBool(offsets[35]),
-    ringtoneName: reader.readString(offsets[36]),
-    shakeTimes: reader.readLong(offsets[37]),
-    sharedUserIds: reader.readStringList(offsets[38]),
-    showMotivationalQuote: reader.readBool(offsets[39]),
-    snoozeDuration: reader.readLong(offsets[40]),
-    volMax: reader.readDouble(offsets[41]),
-    volMin: reader.readDouble(offsets[42]),
-    weatherTypes: reader.readLongList(offsets[43]) ?? [],
+    isMemoryEnabled: reader.readBool(offsets[16]),
+    isOneTime: reader.readBool(offsets[17]),
+    isPedometerEnabled: reader.readBool(offsets[18]),
+    isQrEnabled: reader.readBool(offsets[19]),
+    isShakeEnabled: reader.readBool(offsets[20]),
+    isSharedAlarmEnabled: reader.readBool(offsets[21]),
+    isSunriseEnabled: reader.readBool(offsets[22]),
+    isWeatherEnabled: reader.readBool(offsets[23]),
+    label: reader.readString(offsets[24]),
+    lastEditedUserId: reader.readString(offsets[25]),
+    location: reader.readString(offsets[26]),
+    mathsDifficulty: reader.readLong(offsets[27]),
+    minutesSinceMidnight: reader.readLong(offsets[28]),
+    mutexLock: reader.readBool(offsets[29]),
+    note: reader.readString(offsets[30]),
+    numMathsQuestions: reader.readLong(offsets[31]),
+    numMemoryRounds: reader.readLong(offsets[32]),
+    numberOfSteps: reader.readLong(offsets[33]),
+    ownerId: reader.readString(offsets[34]),
+    ownerName: reader.readString(offsets[35]),
+    profileName: reader.readString(offsets[36]),
+    qrValue: reader.readString(offsets[37]),
+    ringOn: reader.readBool(offsets[38]),
+    ringtoneName: reader.readString(offsets[39]),
+    shakeTimes: reader.readLong(offsets[40]),
+    sharedUserIds: reader.readStringList(offsets[41]),
+    showMotivationalQuote: reader.readBool(offsets[42]),
+    snoozeDuration: reader.readLong(offsets[43]),
+    sunriseColorScheme: reader.readLong(offsets[44]),
+    sunriseDuration: reader.readLong(offsets[45]),
+    sunriseIntensity: reader.readDouble(offsets[46]),
+    volMax: reader.readDouble(offsets[47]),
+    volMin: reader.readDouble(offsets[48]),
+    weatherTypes: reader.readLongList(offsets[49]) ?? [],
   );
   object.firestoreId = reader.readStringOrNull(offsets[5]);
   object.isarId = id;
@@ -452,48 +494,60 @@ P _profileModelDeserializeProp<P>(
     case 21:
       return (reader.readBool(offset)) as P;
     case 22:
-      return (reader.readString(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 23:
-      return (reader.readString(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 24:
       return (reader.readString(offset)) as P;
     case 25:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 26:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 27:
-      return (reader.readBool(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 28:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 29:
-      return (reader.readLong(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 30:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 31:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 32:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 33:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 34:
       return (reader.readString(offset)) as P;
     case 35:
-      return (reader.readBool(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 36:
       return (reader.readString(offset)) as P;
     case 37:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 38:
-      return (reader.readStringList(offset)) as P;
-    case 39:
       return (reader.readBool(offset)) as P;
+    case 39:
+      return (reader.readString(offset)) as P;
     case 40:
       return (reader.readLong(offset)) as P;
     case 41:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readStringList(offset)) as P;
     case 42:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 43:
+      return (reader.readLong(offset)) as P;
+    case 44:
+      return (reader.readLong(offset)) as P;
+    case 45:
+      return (reader.readLong(offset)) as P;
+    case 46:
+      return (reader.readDouble(offset)) as P;
+    case 47:
+      return (reader.readDouble(offset)) as P;
+    case 48:
+      return (reader.readDouble(offset)) as P;
+    case 49:
       return (reader.readLongList(offset) ?? []) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -1472,6 +1526,16 @@ extension ProfileModelQueryFilter
   }
 
   QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      isMemoryEnabledEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isMemoryEnabled',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
       isOneTimeEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -1516,6 +1580,16 @@ extension ProfileModelQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'isSharedAlarmEnabled',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      isSunriseEnabledEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isSunriseEnabled',
         value: value,
       ));
     });
@@ -2296,6 +2370,62 @@ extension ProfileModelQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
         property: r'numMathsQuestions',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      numMemoryRoundsEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'numMemoryRounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      numMemoryRoundsGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'numMemoryRounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      numMemoryRoundsLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'numMemoryRounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      numMemoryRoundsBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'numMemoryRounds',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -3415,6 +3545,184 @@ extension ProfileModelQueryFilter
     });
   }
 
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseColorSchemeEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sunriseColorScheme',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseColorSchemeGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'sunriseColorScheme',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseColorSchemeLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'sunriseColorScheme',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseColorSchemeBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'sunriseColorScheme',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseDurationEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sunriseDuration',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseDurationGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'sunriseDuration',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseDurationLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'sunriseDuration',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseDurationBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'sunriseDuration',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseIntensityEqualTo(
+    double value, {
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sunriseIntensity',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseIntensityGreaterThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'sunriseIntensity',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseIntensityLessThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'sunriseIntensity',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition>
+      sunriseIntensityBetween(
+    double lower,
+    double upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'sunriseIntensity',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
   QueryBuilder<ProfileModel, ProfileModel, QAfterFilterCondition> volMaxEqualTo(
     double value, {
     double epsilon = Query.epsilon,
@@ -3894,6 +4202,20 @@ extension ProfileModelQuerySortBy
     });
   }
 
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortByIsMemoryEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortByIsMemoryEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.desc);
+    });
+  }
+
   QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy> sortByIsOneTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isOneTime', Sort.asc);
@@ -3958,6 +4280,20 @@ extension ProfileModelQuerySortBy
       sortByIsSharedAlarmEnabledDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isSharedAlarmEnabled', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortByIsSunriseEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortByIsSunriseEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.desc);
     });
   }
 
@@ -4076,6 +4412,20 @@ extension ProfileModelQuerySortBy
       sortByNumMathsQuestionsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'numMathsQuestions', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortByNumMemoryRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortByNumMemoryRoundsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.desc);
     });
   }
 
@@ -4204,6 +4554,48 @@ extension ProfileModelQuerySortBy
       sortBySnoozeDurationDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoozeDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortBySunriseColorScheme() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortBySunriseColorSchemeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortBySunriseDuration() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortBySunriseDurationDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortBySunriseIntensity() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      sortBySunriseIntensityDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.desc);
     });
   }
 
@@ -4431,6 +4823,20 @@ extension ProfileModelQuerySortThenBy
     });
   }
 
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenByIsMemoryEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenByIsMemoryEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isMemoryEnabled', Sort.desc);
+    });
+  }
+
   QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy> thenByIsOneTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isOneTime', Sort.asc);
@@ -4495,6 +4901,20 @@ extension ProfileModelQuerySortThenBy
       thenByIsSharedAlarmEnabledDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isSharedAlarmEnabled', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenByIsSunriseEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenByIsSunriseEnabledDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isSunriseEnabled', Sort.desc);
     });
   }
 
@@ -4628,6 +5048,20 @@ extension ProfileModelQuerySortThenBy
     });
   }
 
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenByNumMemoryRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenByNumMemoryRoundsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'numMemoryRounds', Sort.desc);
+    });
+  }
+
   QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy> thenByNumberOfSteps() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'numberOfSteps', Sort.asc);
@@ -4753,6 +5187,48 @@ extension ProfileModelQuerySortThenBy
       thenBySnoozeDurationDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoozeDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenBySunriseColorScheme() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenBySunriseColorSchemeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseColorScheme', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenBySunriseDuration() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenBySunriseDurationDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseDuration', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenBySunriseIntensity() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QAfterSortBy>
+      thenBySunriseIntensityDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sunriseIntensity', Sort.desc);
     });
   }
 
@@ -4890,6 +5366,13 @@ extension ProfileModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<ProfileModel, ProfileModel, QDistinct>
+      distinctByIsMemoryEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isMemoryEnabled');
+    });
+  }
+
   QueryBuilder<ProfileModel, ProfileModel, QDistinct> distinctByIsOneTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isOneTime');
@@ -4920,6 +5403,13 @@ extension ProfileModelQueryWhereDistinct
       distinctByIsSharedAlarmEnabled() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isSharedAlarmEnabled');
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QDistinct>
+      distinctByIsSunriseEnabled() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isSunriseEnabled');
     });
   }
 
@@ -4983,6 +5473,13 @@ extension ProfileModelQueryWhereDistinct
       distinctByNumMathsQuestions() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'numMathsQuestions');
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QDistinct>
+      distinctByNumMemoryRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'numMemoryRounds');
     });
   }
 
@@ -5058,6 +5555,27 @@ extension ProfileModelQueryWhereDistinct
       distinctBySnoozeDuration() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'snoozeDuration');
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QDistinct>
+      distinctBySunriseColorScheme() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'sunriseColorScheme');
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QDistinct>
+      distinctBySunriseDuration() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'sunriseDuration');
+    });
+  }
+
+  QueryBuilder<ProfileModel, ProfileModel, QDistinct>
+      distinctBySunriseIntensity() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'sunriseIntensity');
     });
   }
 
@@ -5187,6 +5705,12 @@ extension ProfileModelQueryProperty
     });
   }
 
+  QueryBuilder<ProfileModel, bool, QQueryOperations> isMemoryEnabledProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isMemoryEnabled');
+    });
+  }
+
   QueryBuilder<ProfileModel, bool, QQueryOperations> isOneTimeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isOneTime');
@@ -5216,6 +5740,13 @@ extension ProfileModelQueryProperty
       isSharedAlarmEnabledProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isSharedAlarmEnabled');
+    });
+  }
+
+  QueryBuilder<ProfileModel, bool, QQueryOperations>
+      isSunriseEnabledProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isSunriseEnabled');
     });
   }
 
@@ -5274,6 +5805,12 @@ extension ProfileModelQueryProperty
       numMathsQuestionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'numMathsQuestions');
+    });
+  }
+
+  QueryBuilder<ProfileModel, int, QQueryOperations> numMemoryRoundsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'numMemoryRounds');
     });
   }
 
@@ -5342,6 +5879,26 @@ extension ProfileModelQueryProperty
   QueryBuilder<ProfileModel, int, QQueryOperations> snoozeDurationProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'snoozeDuration');
+    });
+  }
+
+  QueryBuilder<ProfileModel, int, QQueryOperations>
+      sunriseColorSchemeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'sunriseColorScheme');
+    });
+  }
+
+  QueryBuilder<ProfileModel, int, QQueryOperations> sunriseDurationProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'sunriseDuration');
+    });
+  }
+
+  QueryBuilder<ProfileModel, double, QQueryOperations>
+      sunriseIntensityProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'sunriseIntensity');
     });
   }
 

@@ -101,7 +101,7 @@ class _ProfileSelectState extends State<ProfileSelect> {
               ),
               decoration: BoxDecoration(
                   color: profile.profileName == controller.selectedProfile.value
-                      ? kprimaryColor
+                      ? Get.find<ThemeController>().primaryColor.value
                       : themeController.secondaryBackgroundColor.value,
                   borderRadius: BorderRadius.circular(30),),
               child: Text(
@@ -120,7 +120,7 @@ class _ProfileSelectState extends State<ProfileSelect> {
 
   void _scrollToSelected() {
     Future.delayed(1000.milliseconds, () {
-      Scrollable.ensureVisible(scrollKey.currentContext!,
+      Scrollable.ensureVisible(Get.context!,
           duration: 500.milliseconds,);
     });
   }

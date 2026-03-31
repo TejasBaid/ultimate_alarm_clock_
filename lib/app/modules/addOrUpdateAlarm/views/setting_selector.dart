@@ -1,3 +1,4 @@
+import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ultimate_alarm_clock/app/data/providers/google_cloud_api_provider.dart';
@@ -42,11 +43,12 @@ class SettingSelector extends StatelessWidget {
                   final isLoggedIn = await GoogleCloudProvider.isUserLoggedin();
                   if(isLoggedIn)
                     {
-                      Get.dialog(ShareDialog(
-                        homeController: controller.homeController,
-                        controller: controller,
-                        themeController: controller.themeController,
-                      ));
+                      // Get.dialog(ShareDialog(
+                      //   homeController: controller.homeController,
+                      //   controller: controller,
+                      //   themeController: controller.themeController,
+                      // ));
+                                        controller.alarmSettingType.value = val;
                     }
                   else{
                     await GoogleCloudProvider.getInstance();
@@ -59,7 +61,7 @@ class SettingSelector extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: controller.alarmSettingType.value == val
-                      ? kprimaryColor
+                      ? Get.find<ThemeController>().primaryColor.value
                       : controller.themeController.secondaryBackgroundColor.value,
                   borderRadius: BorderRadius.circular(20),
                 ),

@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:shake/shake.dart';
+
 import 'package:ultimate_alarm_clock/app/data/models/alarm_model.dart';
 import 'package:ultimate_alarm_clock/app/utils/audio_utils.dart';
 import 'package:ultimate_alarm_clock/app/utils/constants.dart';
@@ -18,7 +19,6 @@ class AlarmChallengeController extends GetxController {
 
   final RxInt shakedCount = 0.obs;
   final isShakeOngoing = Status.initialized.obs;
-  ShakeDetector? _shakeDetector;
   MobileScannerController? qrController;
 
   final qrValue = ''.obs;
@@ -42,6 +42,38 @@ class AlarmChallengeController extends GetxController {
   bool shouldProcessStepCount = false;
 
   late Stream<StepCount> _stepCountStream;
+
+  // Memory Challenge Variables
+  final isMemoryOngoing = Status.initialized.obs;
+  final RxInt numMemoryRounds = 0.obs;
+  final RxList<int> memoryPattern = <int>[].obs;
+  // Incremented each time a new pattern is ready — view listens to this
+  // instead of memoryPattern directly to avoid firing on each individual .add()
+  final RxInt memoryPatternVersion = 0.obs;
+  int currentMemoryRound = 1;
+
+  void generateMemoryPattern() {
+    final random = Random();
+    // Pattern length grows with each round: round 1 = 3 tiles, round 2 = 4, etc.
+    final patternLength = currentMemoryRound + 2;
+    final newPattern = List.generate(patternLength, (_) => random.nextInt(16));
+    memoryPattern.assignAll(newPattern);
+    memoryPatternVersion.value++;
+  }
+
+  void onMemoryRoundCompleted() {
+    restartTimer();
+    currentMemoryRound++;
+    numMemoryRounds.value--;
+    if (numMemoryRounds.value > 0) {
+      generateMemoryPattern();
+    } else {
+      isMemoryOngoing.value = Status.completed;
+      alarmRecord.isMemoryEnabled = false;
+      Get.back();
+      isChallengesComplete();
+    }
+  }
 
   void onButtonPressed(String buttonText) {
     displayValue.value += buttonText;
@@ -97,12 +129,12 @@ class AlarmChallengeController extends GetxController {
     if (alarmRecord.isShakeEnabled) {
       isShakeOngoing.listen((value) {
         if (value == Status.ongoing) {
-          _shakeDetector = ShakeDetector.autoStart(
-            onPhoneShake: () {
-              shakedCount.value -= 1;
-              restartTimer();
-            },
-          );
+          // _shakeDetector = ShakeDetector.autoStart(
+          //   onPhoneShake: () {
+          //     shakedCount.value -= 1;
+          //     restartTimer();
+          //   },
+          // );
         }
       });
 
@@ -111,7 +143,7 @@ class AlarmChallengeController extends GetxController {
           isShakeOngoing.value = Status.completed;
           alarmRecord.isShakeEnabled = false;
           Get.back();
-          _shakeDetector!.stopListening();
+          // _shakeDetector!.stopListening();
           isChallengesComplete();
         }
       });
@@ -196,6 +228,11 @@ class AlarmChallengeController extends GetxController {
           }
         });
       }
+    }
+
+    if (alarmRecord.isMemoryEnabled) {
+      numMemoryRounds.value = alarmRecord.numMemoryRounds;
+      generateMemoryPattern();
     }
   }
 

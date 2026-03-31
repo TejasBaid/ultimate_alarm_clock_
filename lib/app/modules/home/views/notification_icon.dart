@@ -1,3 +1,4 @@
+import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ultimate_alarm_clock/app/data/providers/firestore_provider.dart';
@@ -14,15 +15,18 @@ Widget notificationIcon(HomeController controller) {
           ? StreamBuilder(
               stream: FirestoreDb.getNotifications(),
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final List notif = snapshot.data!['receivedItems'];
+                if (snapshot.hasData && snapshot.data != null) {
+                  final document = snapshot.data!;
+                  final data = document.data();
+                  final List notif = data != null ? (data['receivedItems'] ?? []) : [];
                   controller.notifications = notif;
+                  debugPrint('🔔 NotificationIcon: Document exists: ${document.exists}, Data: $data, Notifications: ${notif.length}');
                   return notif.isEmpty
                       ? InkWell(
                           onTap: () {
                             Get.snackbar('Notifications', 'No Notifications');
                           },
-                          child: const Icon(Icons.notifications),
+                          child: Icon(Icons.notifications),
                         )
                       : InkWell(
                           onTap: () {
@@ -43,8 +47,8 @@ Widget notificationIcon(HomeController controller) {
                                 top: -3,
                                 child: Text(
                                   '${notif.length}',
-                                  style: const TextStyle(
-                                    color: kprimaryColor,
+                                  style: TextStyle(
+                                    color: Get.find<ThemeController>().primaryColor.value,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -53,13 +57,13 @@ Widget notificationIcon(HomeController controller) {
                           ),
                         );
                 }
-                return const Icon(
+                return Icon(
                   Icons.notifications_none,
                   color: kprimaryDisabledTextColor,
                 );
               },
             )
-          : const Icon(
+          : Icon(
               Icons.notifications_none,
               color: kprimaryDisabledTextColor,
             ),

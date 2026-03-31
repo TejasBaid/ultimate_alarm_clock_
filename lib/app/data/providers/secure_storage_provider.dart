@@ -107,6 +107,17 @@ class SecureStorageProvider {
     );
   }
 
+  Future<String?> readColorThemeIndex() async {
+    return await _secureStorage.read(key: 'color_theme_index');
+  }
+
+  Future<void> writeColorThemeIndex({required int index}) async {
+    await _secureStorage.write(
+      key: 'color_theme_index',
+      value: index.toString(),
+    );
+  }
+
   //check 24 hrs enabled
   Future<bool> read24HoursEnabled({required String key}) async {
     return await _secureStorage.read(key: key) == 'true';
@@ -213,6 +224,49 @@ class SecureStorageProvider {
     await _secureStorage.write(
       key: 'timer_id',
       value: timerId.toString(),
+    );
+  }
+
+  // Timezone preference methods
+  Future<bool> readTimezoneEnabledByDefault({required String key}) async {
+    return await _secureStorage.read(key: key) == 'true';
+  }
+
+  Future<void> writeTimezoneEnabledByDefault({
+    required String key,
+    required bool isTimezoneEnabledByDefault,
+  }) async {
+    await _secureStorage.write(
+      key: key,
+      value: isTimezoneEnabledByDefault.toString(),
+    );
+  }
+
+  Future<String> readDefaultTimezoneId({required String key}) async {
+    return await _secureStorage.read(key: key) ?? '';
+  }
+
+  Future<void> writeDefaultTimezoneId({
+    required String key,
+    required String defaultTimezoneId,
+  }) async {
+    await _secureStorage.write(
+      key: key,
+      value: defaultTimezoneId,
+    );
+  }
+
+  Future<bool> readShowTimezoneInAlarmList({required String key}) async {
+    return await _secureStorage.read(key: key) != 'false'; // Default to true
+  }
+
+  Future<void> writeShowTimezoneInAlarmList({
+    required String key,
+    required bool showTimezoneInAlarmList,
+  }) async {
+    await _secureStorage.write(
+      key: key,
+      value: showTimezoneInAlarmList.toString(),
     );
   }
 }

@@ -27,7 +27,8 @@ class TimerRingView extends GetView<TimerRingController> {
         );
       },
       child: SafeArea(
-        child: Scaffold(
+        child: Obx(() => Scaffold(
+          backgroundColor: Get.find<ThemeController>().primaryBackgroundColor.value,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton: Padding(
@@ -38,7 +39,7 @@ class TimerRingView extends GetView<TimerRingController> {
               child: TextButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    kprimaryColor,
+                    Get.find<ThemeController>().primaryColor.value,
                   ),
                 ),
                 onPressed: () async {
@@ -80,7 +81,7 @@ class TimerRingView extends GetView<TimerRingController> {
               ],
             ),
           ),
-        ),
+        )),
       ),
     );
   }

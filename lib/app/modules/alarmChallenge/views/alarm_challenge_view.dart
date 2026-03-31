@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ultimate_alarm_clock/app/modules/alarmChallenge/views/maths_challenge_view.dart';
+import 'package:ultimate_alarm_clock/app/modules/alarmChallenge/views/memory_challenge_view.dart';
 import 'package:ultimate_alarm_clock/app/modules/alarmChallenge/views/pedometer_challenge_view.dart';
 import 'package:ultimate_alarm_clock/app/modules/alarmChallenge/views/qr_challenge_view.dart';
 import 'package:ultimate_alarm_clock/app/modules/alarmChallenge/views/shake_challenge_view.dart';
@@ -28,8 +29,10 @@ class AlarmChallengeView extends GetView<AlarmChallengeController> {
         Utils.hapticFeedback();
         controller.restartTimer();
       },
-      child: Scaffold(
+      child: Obx(() => Scaffold(
+        backgroundColor: themeController.primaryBackgroundColor.value,
         appBar: AppBar(
+          backgroundColor: themeController.primaryBackgroundColor.value,
           automaticallyImplyLeading: false,
           centerTitle: true,
           iconTheme: Theme.of(context).iconTheme,
@@ -42,7 +45,7 @@ class AlarmChallengeView extends GetView<AlarmChallengeController> {
                 minHeight: 2,
                 value: controller.progress.value,
                 backgroundColor: Colors.grey,
-                valueColor: const AlwaysStoppedAnimation<Color>(kprimaryColor),
+                valueColor: AlwaysStoppedAnimation<Color>(Get.find<ThemeController>().primaryColor.value),
               ),
             ),
             Expanded(
@@ -292,6 +295,65 @@ class AlarmChallengeView extends GetView<AlarmChallengeController> {
                             height: 20,
                             width: 0,
                           ),
+                          if (controller.alarmRecord.isMemoryEnabled)
+                            InkWell(
+                              onTap: () {
+                                Utils.hapticFeedback();
+                                if (controller.isMemoryOngoing.value !=
+                                        Status.completed &&
+                                    controller.alarmRecord.isMemoryEnabled) {
+                                  controller.isMemoryOngoing.value =
+                                      Status.ongoing;
+                                  Get.to(() => const MemoryChallengeView());
+                                }
+                              },
+                              child: Obx(
+                                () => Container(
+                                  width: width * 0.91,
+                                  height: height * 0.1,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(18),
+                                    ),
+                                    color: themeController.secondaryBackgroundColor.value,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Icon(
+                                        Icons.grid_view,
+                                        color: themeController.primaryTextColor.value.withOpacity(0.8),
+                                        size: 28,
+                                      ),
+                                      Text(
+                                        'Memory Challenge'.tr,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                              color: themeController.primaryTextColor.value,
+                                            ),
+                                      ),
+                                      Obx(
+                                        () => Icon(
+                                          controller.isMemoryOngoing.value ==
+                                                  Status.completed
+                                              ? Icons.done
+                                              : Icons.arrow_forward_ios_sharp,
+                                          color: themeController.primaryTextColor.value
+                                              .withOpacity(0.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          const SizedBox(
+                            height: 20,
+                            width: 0,
+                          ),
                         ],
                       ),
                     ),
@@ -301,7 +363,7 @@ class AlarmChallengeView extends GetView<AlarmChallengeController> {
             ),
           ],
         ),
-      ),
+      )),
     );
   }
 }

@@ -58,7 +58,7 @@ class SnoozeSettingsTile extends StatelessWidget {
                       child: Text(
                         'Done'.tr,
                         style: TextStyle(
-                          color: kprimaryColor,
+                          color: Get.find<ThemeController>().primaryColor.value,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -106,13 +106,23 @@ class SnoozeSettingsTile extends StatelessWidget {
                                         Utils.hapticFeedback();
                                         controller.snoozeDuration.value = value;
                                       },
-                                      textStyle: TextStyle(
-                                        color: themeController.primaryDisabledTextColor.value,
-                                        fontSize: 20,
+                                      itemWidth: Utils
+                                          .getResponsiveNumberPickerItemWidth(
+                                        context,
+                                        screenWidth: MediaQuery.of(context).size.width,
+                                        baseWidthFactor: 0.2,
                                       ),
-                                      selectedTextStyle: TextStyle(
-                                        color: kprimaryColor,
-                                        fontSize: 32,
+                                      textStyle: Utils
+                                          .getResponsiveNumberPickerTextStyle(
+                                        context,
+                                        baseFontSize: 20,
+                                        color: themeController.primaryDisabledTextColor.value,
+                                      ),
+                                      selectedTextStyle: Utils
+                                          .getResponsiveNumberPickerSelectedTextStyle(
+                                        context,
+                                        baseFontSize: 32,
+                                        color: Get.find<ThemeController>().primaryColor.value,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -178,13 +188,23 @@ class SnoozeSettingsTile extends StatelessWidget {
                                         Utils.hapticFeedback();
                                         controller.maxSnoozeCount.value = value;
                                       },
-                                      textStyle: TextStyle(
-                                        color: themeController.primaryDisabledTextColor.value,
-                                        fontSize: 20,
+                                      itemWidth: Utils
+                                          .getResponsiveNumberPickerItemWidth(
+                                        context,
+                                        screenWidth: MediaQuery.of(context).size.width,
+                                        baseWidthFactor: 0.2,
                                       ),
-                                      selectedTextStyle: TextStyle(
-                                        color: kprimaryColor,
-                                        fontSize: 32,
+                                      textStyle: Utils
+                                          .getResponsiveNumberPickerTextStyle(
+                                        context,
+                                        baseFontSize: 20,
+                                        color: themeController.primaryDisabledTextColor.value,
+                                      ),
+                                      selectedTextStyle: Utils
+                                          .getResponsiveNumberPickerSelectedTextStyle(
+                                        context,
+                                        baseFontSize: 32,
+                                        color: Get.find<ThemeController>().primaryColor.value,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),

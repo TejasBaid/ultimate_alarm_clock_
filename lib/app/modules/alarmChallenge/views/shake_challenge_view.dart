@@ -39,7 +39,7 @@ class ShakeChallengeView extends GetView<AlarmChallengeController> {
                 minHeight: 2,
                 value: controller.progress.value,
                 backgroundColor: Colors.grey,
-                valueColor: const AlwaysStoppedAnimation<Color>(kprimaryColor),
+                valueColor: AlwaysStoppedAnimation<Color>(Get.find<ThemeController>().primaryColor.value),
               ),
             ),
             Expanded(
@@ -82,7 +82,7 @@ class ShakeChallengeView extends GetView<AlarmChallengeController> {
                           Obx(
                             () => Text(
                               controller.shakedCount.value.toString(),
-                              style: const TextStyle(fontSize: 35),
+                              style: TextStyle(fontSize: 35),
                             ),
                           ),
                         ],

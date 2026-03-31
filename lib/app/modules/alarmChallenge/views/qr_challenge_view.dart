@@ -40,7 +40,7 @@ class QRChallengeView extends GetView<AlarmChallengeController> {
                 minHeight: 2,
                 value: controller.progress.value,
                 backgroundColor: Colors.grey,
-                valueColor: const AlwaysStoppedAnimation<Color>(kprimaryColor),
+                valueColor: AlwaysStoppedAnimation<Color>(Get.find<ThemeController>().primaryColor.value),
               ),
             ),
             Expanded(
@@ -145,7 +145,7 @@ class QRChallengeView extends GetView<AlarmChallengeController> {
                                                         backgroundColor:
                                                             MaterialStateProperty
                                                                 .all(
-                                                          kprimaryColor,
+                                                          Get.find<ThemeController>().primaryColor.value,
                                                         ),
                                                       ),
                                                       child: Text(
